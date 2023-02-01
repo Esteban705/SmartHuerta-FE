@@ -26,6 +26,7 @@ const LoginUi = () => {
   const changueToRegister = (value) => {
     setLoginOption(value);
   };
+  
 
   const registerUser = async (body) => {
     try {
