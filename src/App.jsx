@@ -16,15 +16,17 @@ function App() {
         <Router>
           <Navbar />
           <Switch>
-            <Route path="/Mapa">
-              <MapPage />
-            </Route>
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/Perfil">
-              <UserPerfil />
-            </Route>
+            <div style={{ marginTop: "4rem", height: "calc(100vh - 65px)" }}>
+              <Route path="/Mapa">
+                <MapPage />
+              </Route>
+              <Route path="/Perfil">
+                <UserPerfil />
+              </Route>
+            </div>
           </Switch>
         </Router>
       </UserMethods>

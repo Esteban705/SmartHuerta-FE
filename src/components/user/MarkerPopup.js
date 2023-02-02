@@ -113,7 +113,7 @@ const dataOfUser = dataUser()
                 <MailOutlineIcon />
               </Grid>
               <Grid item>
-                <TextField id="input-with-icon-grid" label="Email" value={dataOfUser.email} />
+                {/* <TextField id="input-with-icon-grid" label="Email" value={dataOfUser.email} /> */}
               </Grid>
             </Grid>
           </div>

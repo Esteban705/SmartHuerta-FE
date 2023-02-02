@@ -10,6 +10,7 @@ const CardProduct = () => {
   const useStyles = makeStyles(() => ({
     root: {
       maxWidth: "16rem",
+      height: '22rem',
       padding: "0.2rem",
       margin: "0.5rem 0",
       borderRadius: "0.5rem",

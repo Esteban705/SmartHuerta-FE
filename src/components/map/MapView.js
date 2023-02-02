@@ -7,7 +7,6 @@ import { UserIntroduction } from "../user/UserIntroduction";
 import { validationHomesByUser } from "./validation/validationHome";
 import "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css";
 import { geosearch } from "esri-leaflet-geocoder";
-import { Button } from "@material-ui/core";
 import HouseIcon from "@material-ui/icons/House";
 import { buttonMyHome } from "./mapStyles/MapStyles";
 
@@ -35,7 +34,7 @@ const MapView = ({
     control.addTo(map);
     control.on("results", handleOnSearchResuts);
     control.off("results", handleOnSearchResuts);
-  }, []);
+  }, );
 
   const handleOnSearchResuts = (data) => {
     console.log("Searchlts", data);
