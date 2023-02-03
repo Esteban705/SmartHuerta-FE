@@ -12,8 +12,8 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = (props) => {
   const { changueToRegister, loginUser } = props;
@@ -21,14 +21,15 @@ const LoginForm = (props) => {
     return <p style={{ color: "red" }}>{UIMessaje}</p>;
   };
 
-  const history = useHistory();
+
+  let navigate = useNavigate();
 
   const handleLogin = async (values) => {
     const respLogin = await loginUser(values);
     if (respLogin.ok) {
       toast.success("Usuario Logeado con exito ");
       setTimeout(() => {
-        history.push("/map");
+        navigate('/map')
       }, 1000);
     } else {
       console.log(respLogin);
@@ -55,8 +56,7 @@ const LoginForm = (props) => {
   const logInFormik = useFormik({
     initialValues: {
       name: "",
-      password: "",
-      email: "",
+      password: ""
     },
     validate,
     onSubmit: (values) => {
@@ -103,23 +103,6 @@ const LoginForm = (props) => {
             autoComplete="current-password"
             variant="standard"
             value={logInFormik.values.password}
-            onChange={logInFormik.handleChange}
-            onBlur={logInFormik.handleBlur}
-          />
-        </Grid>
-
-        <Grid item align="center">
-          <TextField
-            style={{ marginTop: "0.5rem" }}
-            className={`${styles.inputItems}`}
-            fullWidth
-            name="email"
-            required
-            id="email"
-            label="Email"
-            type="email"
-            variant="standard"
-            value={logInFormik.values.email}
             onChange={logInFormik.handleChange}
             onBlur={logInFormik.handleBlur}
           />

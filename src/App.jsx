@@ -1,13 +1,15 @@
 import React from "react";
 import "./App.css";
 import "./assets/main.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import UserPerfil from "./components/user/UserPerfil";
-import Login from "./components/Login/LoginUi";
+import { Routes, Route } from "react-router-dom";
 import { HttpMethods } from "./components/Context/httpContext";
-import { MapPage } from "./components/map/MapPage";
 import { UserMethods } from "./components/Context/useContext";
-import Navbar from "./components/Navigation/Navbar";
+import { HouseMethods } from "./components/Context/houseContext";
+import LoginUi from "./components/Login/LoginUi";
+import { MapPage } from "./components/map/MapPage";
+import UserPerfil from "./components/user/UserPerfil";
+import Navbar from "./components/Navigation/Navbar"
+
 
 function App() {
   return (

@@ -18,6 +18,8 @@ const ModalAvatarUI = (props) => {
 
   const [file, setFile] = useState("");
 
+  console.log(file)
+
   const onImageChange = async (encodedPicture) => {
     const newEncodedPicture = await resizeEncodedPicture(
       encodedPicture,
@@ -25,10 +27,13 @@ const ModalAvatarUI = (props) => {
       150
     );
 
+    console.log(newEncodedPicture)
     setImg(newEncodedPicture);
   };
 
   const handleUpgradeImg = async () => {
+
+  
     const fileAvatar = file;
     const render = new FileReader();
     render.readAsDataURL(fileAvatar);
@@ -39,7 +44,7 @@ const ModalAvatarUI = (props) => {
 
     handleClose();
   };
-
+/* 
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {
@@ -49,9 +54,9 @@ const ModalAvatarUI = (props) => {
     input: {
       display: "none",
     },
-  }));
+  })); */
 
-  const classes = useStyles();
+ /*  const classes = useStyles(); */
 
   const DialogContent = withStyles((theme) => ({
     root: {
@@ -78,10 +83,10 @@ const ModalAvatarUI = (props) => {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            <div className={classes.root}>
+            <div /* className={classes.root} */>
               <input
                 accept="image/*"
-                className={classes.input}
+                /* className={classes.input} */
                 id="contained-button-file"
                 multiple
                 type="file"
@@ -94,7 +99,7 @@ const ModalAvatarUI = (props) => {
               </label>
               <input
                 accept="image/*"
-                className={classes.input}
+                /* className={classes.input} */
                 id="icon-button-file"
                 onChange={(e) => setFile(e.target.files[0])}
                 type="file"
