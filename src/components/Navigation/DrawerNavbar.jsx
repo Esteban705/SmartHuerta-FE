@@ -103,7 +103,7 @@ const DrawerNavbar = ({ pages, userData }) => {
         >
           <MenuIcon style={{ color: "black" }} />
           <Typography
-            variant="h7"
+            variant="h6"
             style={{ paddingLeft: "1rem", alignItems: "center" }}
           >
             LOGO SMARTHUERTA

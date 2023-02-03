@@ -96,7 +96,7 @@ const ModalCreateNewProduct = ({
               style={{ paddingTop: "1rem", paddingBottom: "0.3rem" }}
               label="Multiline"
               multiline
-              rows={8}
+              minRows={8}
               defaultValue={""}
               variant="outlined"
             />

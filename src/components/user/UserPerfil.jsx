@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Button,
@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useContext } from "react";
-import { UserContext } from "../Context/useContext";
+import { UserContext, UserMethods } from "../Context/useContext";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { colorButton } from "../Login/Styles/LoginStyles";
 import { Pagination } from "@material-ui/lab";
@@ -20,10 +20,12 @@ import globalStyles from "../GlobalStyles/globalStyles";
 import EditProfileUserPage from "./components/editProfile/EditProfileUserPage";
 
 const UserPerfil = () => {
-  const { dataUser } = useContext(UserContext);
-  const userData = dataUser();
+  const { getUserData, dataUser } = useContext(UserContext);
+
+  const dataOfUser = dataUser();
 
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
+  const [userData, setUserData] = useState();
 
   const handleOpenProfilModal = () => {
     setOpenEditProfileModal(true);
@@ -32,6 +34,21 @@ const UserPerfil = () => {
     setOpenEditProfileModal(false);
   };
 
+  const getUsarData = async () => {
+    const data = await getUserData(dataOfUser.id);
+    setUserData(data);
+    return data;
+  };
+
+
+  useEffect(() => {
+    console.log("puta que lo pario");
+    getUsarData();
+  }, []);
+
+  console.log("userData", userData);
+
+  getUserData(dataOfUser.id);
   return (
     <Container style={{ padding: "1rem" }}>
       <Paper variant={10} style={{ padding: "2rem" }}>
@@ -55,7 +72,7 @@ const UserPerfil = () => {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="h6" component="div">
-                  {userData.name.toUpperCase()}
+                  {/* {userData.name.toUpperCase()} */}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
