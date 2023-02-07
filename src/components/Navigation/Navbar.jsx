@@ -9,6 +9,7 @@ import {
 import DrawerNavbar from "./DrawerNavbar";
 import ListItemsNavbar from "./ListItemsNavbar";
 import { toolbarXl } from "./styles/NavbarStyles";
+import { useLocation } from "react-router";
 
 
 const pages = ["Mapa", "Usuarios", "Trueques", "Nosotros","Contacto"];
@@ -16,6 +17,7 @@ const pages = ["Mapa", "Usuarios", "Trueques", "Nosotros","Contacto"];
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
+  const location = useLocation();
 
 
 
@@ -23,6 +25,8 @@ const Navbar = () => {
   // const userLoger = parseInt(localStorage.getItem("user"));
 
   // console.log(getUserData());
+if(!location.pathname.includes("login")) {
+
 
   return (
     <AppBar color="white">
@@ -38,7 +42,14 @@ const Navbar = () => {
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  ); 
+} else {
+ return (
+  <>
+  </>
+  )
+}
 };
+
 
 export default Navbar;

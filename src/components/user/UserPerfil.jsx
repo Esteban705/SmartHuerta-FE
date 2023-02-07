@@ -16,12 +16,13 @@ import { colorButton } from "../Login/Styles/LoginStyles";
 import CartProduct from "./components/cardProduct/CartProduct";
 import { Pagination } from "@material-ui/lab";
 
+
 const UserPerfil = () => {
   const { dataUser } = useContext(UserContext);
   const userData = dataUser();
 
   return (
-    <Container style={{ padding: "1rem" }}>
+    <Container style={{ padding: "1rem"}} >
       <Paper variant={10} style={{ padding: "2rem" }}>
         <Grid container spacing={2} style={{ marginBottom: "2rem" }}>
           <Grid item>
