@@ -14,7 +14,6 @@ import {
   Divider,
   Paper,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { Autocomplete } from "@material-ui/lab";
 import React from "react";
 import GreenButton from "../../../../shared/helpers/GreenButton";
@@ -23,27 +22,7 @@ const ModalCreateNewProduct = ({
   handleCloseModal,
   openModalCreateProduct,
 }) => {
-  const useStyles = makeStyles(() => ({
-    root: {
-      maxWidth: "16rem",
-      height: "22rem",
-      padding: "0.2rem",
-      margin: "0.5rem 0",
-      borderRadius: "0.5rem",
-      "&:hover": {
-        transform: "scale(1.05)",
-      },
-    },
-    media: {
-      height: 0,
-      paddingTop: "56.25%", // 16:9
-    },
-    content: {
-      padding: "0 1rem",
-    },
-  }));
 
-  const classes = useStyles();
   return (
     <Dialog
       // width

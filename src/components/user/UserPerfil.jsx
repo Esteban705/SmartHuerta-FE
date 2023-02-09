@@ -15,7 +15,6 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { colorButton } from "../Login/Styles/LoginStyles";
 import { Pagination } from "@material-ui/lab";
 import { ArticuloPage } from "../articulos/ArticuloPage";
-import { useState } from "react";
 import CardProduct from "./components/cardProduct/CardProduct";
 import CardAddNewProduct from "./components/cardProduct/CardAddNewProduct";
 import globalStyles from "../GlobalStyles/globalStyles";
