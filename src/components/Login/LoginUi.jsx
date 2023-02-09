@@ -62,7 +62,7 @@ const LoginUi = () => {
 
   return (
     <>
-      <Grid container className={`${styles.bgimage}`}>
+      <Grid container className={`${styles.bgimage}`} style={{width: '100vw',height: '100vh'}}>
         <Paper elevation={10} xs={12} style={paperLogin}>
           <Box style={bgColorLogo}>
             <div>

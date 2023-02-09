@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Avatar,
   Button,
@@ -8,15 +9,17 @@ import {
   Paper,
   Typography,
 } from "@material-ui/core";
-import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../Context/useContext";
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from "@material-ui/icons/Settings";
 import { colorButton } from "../Login/Styles/LoginStyles";
-import CartProduct from "./components/cardProduct/CartProduct";
 import { Pagination } from "@material-ui/lab";
 import { ArticuloPage } from "../articulos/ArticuloPage";
 import { useState } from "react";
+import CardProduct from "./components/cardProduct/CardProduct";
+import CardAddNewProduct from "./components/cardProduct/CardAddNewProduct";
+import globalStyles from "../GlobalStyles/globalStyles";
+import EditProfileUserPage from "./components/editProfile/EditProfileUserPage";
 
 const UserPerfil = () => {
   const { dataUser } = useContext(UserContext);
@@ -26,6 +29,14 @@ const UserPerfil = () => {
   const handleClosetModalArticle = () => {
     setOpen(false)
   }
+  const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
+
+  const handleOpenProfilModal = () => {
+    setOpenEditProfileModal(true);
+  };
+  const handleCloseModalProfile = () => {
+    setOpenEditProfileModal(false);
+  };
 
   return (
     <Container style={{ padding: "1rem" }}>
@@ -86,6 +97,7 @@ const UserPerfil = () => {
                 variant="contained"
                 style={colorButton}
                 endIcon={<SettingsIcon />}
+                onClick={handleOpenProfilModal}
               >
                 <Typography
                   sx={{ cursor: "pointer" }}
@@ -98,16 +110,27 @@ const UserPerfil = () => {
             </Grid>
           </Grid>
         </Grid>
+        <EditProfileUserPage
+          openEditProfileModal={openEditProfileModal}
+          handleCloseModalProfile={handleCloseModalProfile}
+        />
+
         <Divider />
 
         <Grid
-          style={{ backgroundColor: "#A3DCA6",marginTop: '1rem' }}
+          style={{
+            backgroundColor: `${globalStyles.backgroundColorFooter}`,
+            marginTop: "1rem",
+          }}
           container
           justifyContent="space-evenly"
         >
+          <Grid item>
+            <CardAddNewProduct />
+          </Grid>
           {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
             <Grid item>
-              <CartProduct key={value} />
+              <CardProduct />
             </Grid>
           ))}
 
@@ -116,6 +139,10 @@ const UserPerfil = () => {
             <Button variant="contained" onClick={() => setOpen(true)}>Cargar Mas Productos</Button>
           </div>
           <ArticuloPage open={open} handleClosetModalArticle={handleClosetModalArticle}/>
+          {/* <div>
+            <Pagination count={3} variant="outlined" shape="rounded" />
+            <Button variant="contained">Cargar Mas Productos</Button>
+          </div> */}
         </Grid>
       </Paper>
     </Container>
