@@ -15,10 +15,17 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { colorButton } from "../Login/Styles/LoginStyles";
 import CartProduct from "./components/cardProduct/CartProduct";
 import { Pagination } from "@material-ui/lab";
+import { ArticuloPage } from "../articulos/ArticuloPage";
+import { useState } from "react";
 
 const UserPerfil = () => {
   const { dataUser } = useContext(UserContext);
+  const [open, setOpen] = useState(false)
   const userData = dataUser();
+
+  const handleClosetModalArticle = () => {
+    setOpen(false)
+  }
 
   return (
     <Container style={{ padding: "1rem" }}>
@@ -106,8 +113,9 @@ const UserPerfil = () => {
 
           <div>
             {/* <Pagination count={3} variant="outlined" shape="rounded" /> */}
-            <Button variant="contained">Cargar Mas Productos</Button>
+            <Button variant="contained" onClick={() => setOpen(true)}>Cargar Mas Productos</Button>
           </div>
+          <ArticuloPage open={open} handleClosetModalArticle={handleClosetModalArticle}/>
         </Grid>
       </Paper>
     </Container>
