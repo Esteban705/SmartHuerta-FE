@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-
+import React,{ useState } from "react";
 import { buttonNavStyles } from "../Navigation/styles/NavbarStyles";
 import MenuIcon from "@material-ui/icons/Menu";
 import {
@@ -19,6 +17,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import Settings from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AutorenewIcon from '@material-ui/icons/Autorenew';
+import { Link } from "react-router-dom";
 // import AvatarUser from "../user/avatar/AvatarUser";
 
 // const actions = ["Loguin", "Logout"];

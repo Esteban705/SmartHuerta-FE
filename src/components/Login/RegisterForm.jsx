@@ -7,12 +7,10 @@ import { isEmptyObject } from "jquery";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-
-
 const RegisterForm = (props) => {
-  const {  changueToLogin, registerUser } = props;
+  const { changueToLogin, registerUser } = props;
   const [sucessRegister, setSucessRegister] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const validateMessaje = (UIMessaje) => {
     return <p style={{ color: "red" }}>{UIMessaje}</p>;
@@ -52,16 +50,15 @@ const RegisterForm = (props) => {
     return errors;
   };
 
-
   const handleRegister = async (values) => {
     const respRegister = await registerUser(values);
     if (respRegister.ok) {
       toast.success("Usuario Registrado con exito ");
       setTimeout(() => {
-        navigate('/map')
+        navigate("/map");
       }, 1000);
     } else {
-      console.log(respRegister)
+      console.log(respRegister);
       toast.error(respRegister.msg);
     }
   };
@@ -75,7 +72,7 @@ const RegisterForm = (props) => {
     },
     validate,
     onSubmit: (values, { resetForm }) => {
-      handleRegister(values)
+      handleRegister(values);
       resetForm();
       setSucessRegister(true);
       setTimeout(() => {
@@ -87,9 +84,8 @@ const RegisterForm = (props) => {
     <p style={{ color: "green" }}>Registrado con Exito</p>
   );
   return (
-
     <Box style={{ padding: "1rem", position: "relative" }}>
-        <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <form onSubmit={registerFormik.handleSubmit}>
         <Grid item align="center">
           <Typography gutterBottom variant="h5" component="div">
@@ -151,7 +147,7 @@ const RegisterForm = (props) => {
         <div>
           <TextField
             name="confirmPassword"
-           style={{ marginBottom: "1rem" }}
+            style={{ marginBottom: "1rem" }}
             fullWidth
             required
             id="standard-password-input"

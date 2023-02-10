@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 import "./assets/main.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 import { HttpMethods } from "./components/Context/httpContext";
 import { UserMethods } from "./components/Context/useContext";
 import { HouseMethods } from "./components/Context/houseContext";
-import LoginUi from "./components/Login/LoginUi";
+import Login from "./components/Login/LoginUi";
 import { MapPage } from "./components/map/MapPage";
 import UserPerfil from "./components/user/UserPerfil";
 import Navbar from "./components/Navigation/Navbar"
@@ -17,7 +17,7 @@ function App() {
       <UserMethods>
         <Router>
           <Navbar />
-          <Switch>
+          {/* <Switch> */}
             <Route path="/login">
               <Login />
             </Route>
@@ -29,7 +29,7 @@ function App() {
                 <UserPerfil />
               </Route>
             </div>
-          </Switch>
+          {/* </Switch> */}
         </Router>
       </UserMethods>
     </HttpMethods>
