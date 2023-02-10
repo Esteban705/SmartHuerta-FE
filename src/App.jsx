@@ -10,6 +10,7 @@ import { MapPage } from "./components/map/MapPage";
 import UserPerfil from "./components/user/UserPerfil";
 import Navbar from "./components/Navigation/Navbar"
 import PageNotFound from "./utils/PageNotFound";
+import AboutUs from "./components/About/AboutUs";
 
 
 
@@ -20,7 +21,7 @@ function App() {
     <HttpMethods  >
       <UserMethods>
         <Navbar/>
-    
+     
 
       {/* Verificamos si usuario está logeado */}
         {!logged ? 
@@ -51,9 +52,13 @@ function App() {
                 <MapPage />
               </HouseMethods>
             }
+           
           />
          <Route path="/perfil" element={<UserPerfil />} />
-         </Routes>
+       
+         <Route path="aboutus" element={<AboutUs/>}>   
+         </Route> 
+           </Routes>
          </div>
         </>
                 }
