@@ -1,21 +1,150 @@
 import React from 'react'
-
+import imagenes from '../About/imagenes';
 
 const Footer = () => {
-  return (
-      <div style={{
-          height: "100px",
-          weight: "100%",
-          backgroundColor:"#C0C9AF"
-      }}>
-          <p style={{
-              color: "#1F7345",
-              fontSize: "15px",
-              textAlign:"center"
-          }}>Todos los derechos Reservados <img style={{ height: "25px", width: "25px", position:"absolute" }} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABj0lEQVR4nN2V30oCURDGfyh6k/UC1l11kb5D9QJhEb6CJFH2EiG9RimEeJU9SBb9sXqDgtQu8saNA9+BYXPdrfDGDwaWb74zsztnZhbmHVmgDDSBR+BT5p4b8jnNn7AHvAJBjL0Au78JnALOTIAb4AjYABZkBeAY6BpdXWdj4YN/AZWYQ853IK1PElsWH3zT8MtACxjI2sCa8W+ZJKWo4FlT80oo+PuE2jsub3RV8c9AZlKCsqm5LUtL/JUCOuuIuzS6NHArfn9Sgqac7kItBuLt266I+whpa+IvJiV4ktN1i0UgS4KCtG5OfmAoZ+4fCRalHc4qwZK0/VmVqDitRA053YRa9MW7do275BPx59PatBtq07b4jpI4uxbnWti26d20Ns1qcQUaf4914C1i0FaN7lB8L2rQ0Fb0q8KNv0deQ9WXtULBt4ERMAZ2iEHdJKnq06OQ1puPdOaUBEiZJIHGv6YhysmKulBf87GCJ1rXHiUtrrgfTi9JWaKQUUe43fKgYXR2r1Z0vsgLnQ98A9aUnNaatohRAAAAAElFTkSuQmCC"/></p>
+    return (
 
-      </div>
-  )
+        <div style={
+            {
+                height: "100px",
+                weight: "100%",
+                backgroundColor: "#C0C9AF",
+                display: "grid",
+                gridTemplateRows: "100px 100px",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gridGap: "5px"
+
+            }
+        }>
+            <div>
+                <p style={
+                    {
+                        color: "#1F7345",
+                        fontSize: "20px",
+                        textAlign: "center",
+                        marginTop: "20px"
+
+                    }
+                }>Redes sociales</p>
+                <div style={
+                    {
+                        display: "flex",
+                        paddingLeft: "158px"
+                    }
+                }>
+                    <a href="https://instagram.com" target="_blank">
+
+                        <img style={
+                                {
+                                    width: "40px",
+                                    height: "40px"
+
+                                }
+                            }
+                            src={
+                                imagenes.instagramIcon
+                        }></img>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank">
+
+                        <img style={
+                                {
+                                    width: "40px",
+
+                                    height: "40px"
+
+                                }
+                            }
+                            src={
+
+                                imagenes.tiktokIcon
+                            }/>
+                    </a>
+                    <a href="https://facebook.com" target="_blank">
+
+                        <img style={
+                                {
+                                    width: "40px",
+                                    height: "40px"
+                                }
+                            }
+                            src={
+                                imagenes.facebookIcon
+                            }/>
+                    </a>
+                </div>
+
+            </div>
+
+            {/* CopyRight icon & info */}
+            {/* <br/>
+            <br/>
+            <br/> */}
+            <div style={
+                {}
+            }>
+                <a href="https://linkedin.com/smartgroup" target="_blank">
+
+                    <p style={
+                        {
+                            color: "#1F7345",
+                            fontSize: "15px",
+                            textAlign: "center",
+                            marginTop: "50px",
+                            fontWeight: "bold"
+
+
+                        }
+                    }>Todos los derechos Reservados<img style={
+                                {
+                                    height: "15px",
+                                    width: "15px",
+                                    display: "inline-block",
+                                    marginLeft: "2px"
+                                }
+                            }
+                            src={
+                                imagenes.copyIcon
+                            }/>
+                    </p>
+                </a>
+            </div>
+            <div>
+                <p style={
+                    {
+                        color: "#1F7345",
+                        fontSize: "20px",
+                        textAlign: "center",
+                        marginTop: "20px"
+
+
+                    }
+                }>Contactanos</p>
+                <p style={
+                    {
+                        display: "flex",
+                        color: "#1F7345",
+                        fontSize: "15px",
+                        marginLeft: "115px"
+
+
+                    }
+                }>Email: smarthuerta@info.com</p>
+                <p style={
+                    {
+                        display: "flex",
+                        color: "#1F7345",
+                        fontSize: "15px",
+                        marginLeft: "115px"
+
+
+                    }
+                }>Whatsapp de la comunidad: 3939438498</p>
+
+            </div>
+
+        </div>
+    )
 }
 
 export default Footer
