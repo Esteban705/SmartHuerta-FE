@@ -3,11 +3,12 @@ import imagenes from '../About/imagenes';
 
 const Footer = () => {
     return (
-
         <div style={
             {
-                height: "100px",
                 weight: "100%",
+
+                height: "100px",
+
                 backgroundColor: "#C0C9AF",
                 display: "grid",
                 gridTemplateRows: "100px 100px",

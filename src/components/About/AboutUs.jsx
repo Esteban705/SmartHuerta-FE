@@ -4,100 +4,145 @@ import UserCards from "./UserCards";
 // import styles from '../../cssModules/AboutUs.module.css'
 
 const AboutUs = () => {
-    return (<>
-        <div style={
-            {
-                marginTop: "5rem",
-                width: "100%",
-                height: "500px",
-                backgroundColor: "#A5FCBC"
-
-
-            }
-        }>
+    return (
+        <>
             <div style={
-                {}
+                {
+                    marginTop: "5rem",
+                    width: "100%",
+                    height: "500px",
+                    backgroundColor: "#A5FCBC"
+
+
+                }
             }>
-                <h1 style={
+                <div>
+                    <h1 style={
+                        {
+                            color: "#1F7345",
+                            fontSize: "30px",
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            paddingTop: "2rem"
+                        }
+                    }>
+                        Usuarios de la Comunidad de SMART HUERTA
+                    </h1>
+                </div>
+                <div style={
                     {
-                        color: "#1F7345",
-                        fontSize: "30px",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        paddingTop: "2rem"
+                        marginTop: "15px",
+                        marginLeft: "100px",
+                        marginRight: "100px"
                     }
                 }>
-                    Usuarios de la Comunidad de SMART HUERTA
-                </h1>
+                    <p style={
+                        {color: "#1F7345"}
+                    }>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            dignissimos iure amet temporibus optio consequuntur non suscipit
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            placeat voluptate facere maiores dolorum corporis sequi quasi,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            minima exercitationem, sint saepe officia.
+                    </p>
+                    <br/>
+                    <p style={
+                        {color: "#1F7345"}
+                    }>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            dignissimos iure amet temporibus optio consequuntur non suscipit
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            placeat voluptate facere maiores dolorum corporis sequi quasi,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            minima exercitationem, sint saepe officia.
+                    </p>
+                    <br/>
+                    <p style={
+                        {color: "#1F7345"}
+                    }>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            dignissimos iure amet temporibus optio consequuntur non suscipit
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            placeat voluptate facere maiores dolorum corporis sequi quasi,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            minima exercitationem, sint saepe officia.
+                    </p>
+                    <br/>
+                    <p style={
+                        {color: "#1F7345"}
+                    }>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            dignissimos iure amet temporibus optio consequuntur non suscipit
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            placeat voluptate facere maiores dolorum corporis sequi quasi,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            minima exercitationem, sint saepe officia.
+                    </p>
+                </div>
             </div>
-            <div style={
-                {
-                    marginTop: "15px",
-                    marginLeft: "100px",
-                    marginRight: "100px"
-                }
-            }>
-                <p style={
-                    {color: "#1F7345"}
-                }>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-                                                                                                                                                                                                                                                                                                                        dignissimos iure amet temporibus optio consequuntur non suscipit
-                                                                                                                                                                                                                                                                                                                        placeat voluptate facere maiores dolorum corporis sequi quasi,
-                                                                                                                                                                                                                                                                                                                        minima exercitationem, sint saepe officia.
-                </p>
-                <br/>
-                <p style={
-                    {color: "#1F7345"}
-                }>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-                                                                                                                                                                                                                                                                                                                        dignissimos iure amet temporibus optio consequuntur non suscipit
-                                                                                                                                                                                                                                                                                                                        placeat voluptate facere maiores dolorum corporis sequi quasi,
-                                                                                                                                                                                                                                                                                                                        minima exercitationem, sint saepe officia.
-                </p>
-                <br/>
-                <p style={
-                    {color: "#1F7345"}
-                }>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-                                                                                                                                                                                                                                                                                                                        dignissimos iure amet temporibus optio consequuntur non suscipit
-                                                                                                                                                                                                                                                                                                                        placeat voluptate facere maiores dolorum corporis sequi quasi,
-                                                                                                                                                                                                                                                                                                                        minima exercitationem, sint saepe officia.
-                </p>
-                <br/>
-                <p style={
-                    {color: "#1F7345"}
-                }>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-                                                                                                                                                                                                                                                                                                                        dignissimos iure amet temporibus optio consequuntur non suscipit
-                                                                                                                                                                                                                                                                                                                        placeat voluptate facere maiores dolorum corporis sequi quasi,
-                                                                                                                                                                                                                                                                                                                        minima exercitationem, sint saepe officia.
-                </p>
-            </div>
-        </div>
 
-        <div style={
-            {
-                marginLeft: "2rem",
-                marginTop: "5rem",
-                display: "grid",
-                gridTemplateRows: "1fr 1fr 1fr ",
-                gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr ",
-                gap: "0px",
-                height: "100%"
-            }
-        }>
             <div style={
                 {
-                    display: "flex",
-                    marginLeft: "10rem"
+                    marginLeft: "8rem",
+                    marginTop: "5rem",
+                    display: "grid",
+                    gridTemplateRows: "1fr 1fr 1fr ",
+                    gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr ",
+                    gap: "140px",
+                    height: "500px"
+
+
+                }
+            }>
+
+                <UserCards/>
+                <UserCards/>
+                <UserCards/>
+
+
+            </div>
+            <div style={
+                {
+                    marginLeft: "8rem",
+                    marginTop: "5rem",
+                    display: "grid",
+                    gridTemplateRows: "1fr 1fr 1fr ",
+                    gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr ",
+                    gap: "140px",
+                    height: "500px"
+
+
                 }
             }>
                 <UserCards/>
                 <UserCards/>
-                <UserCards/></div>
-        </div>
-        <Footer/>
-    </>);
-};
+                <UserCards/>
+            </div>
+            <div style={
+                {paddingLeft: "36rem"}
+            }>
+                <a href="#">
+                    <button style={
+                        {
+                            backgroundColor: "#777777",
+                            fontWeight: "bold",
+                            height: "40px",
+                            width: "200px",
+                            border: "none",
+                            color: "black",
+                            marginLeft: "50px",
+                            marginBottom: "40px",
+                            textAlign: "center",
+                            display: "inlineBlock",
+                            fontSize: "15px",
+                            borderRadius: "12px"
+                        }
+                    }>
+
+                        <p>Ver más</p>
+                    </button>
+                </a>
+
+            </div>
+
+
+            <Footer/>
+
+        </>
+    );
+};;
 
 export default AboutUs;
