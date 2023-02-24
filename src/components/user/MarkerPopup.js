@@ -27,6 +27,7 @@ const MarkerPopup = ({ venue, deleteHome }) => {
   const [value, setValue] = useState(2);
   const { dataUser } = useContext(UserContext);
 
+  
   const navigate = useNavigate();
 
   const dataOfUser = dataUser();
@@ -105,11 +106,7 @@ const MarkerPopup = ({ venue, deleteHome }) => {
                 <MailOutlineIcon />
               </Grid>
               <Grid item>
-                <TextField
-                  id="input-with-icon-grid"
-                  label="Email"
-                  value={dataOfUser.email}
-                />
+                {/* <TextField id="input-with-icon-grid" label="Email" value={dataOfUser.email} /> */}
               </Grid>
             </Grid>
           </div>
