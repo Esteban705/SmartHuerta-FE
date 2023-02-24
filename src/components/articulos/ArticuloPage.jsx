@@ -1,32 +1,55 @@
-import { Dialog, DialogTitle, Paper } from "@material-ui/core";
-import React from "react";
+import { useContext } from "react";
+import { HttpContext } from "../Context/httpContext";
+import { ArticuloView } from "./Views/ArticuloView";
 
 export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
+  const { get, post } = useContext(HttpContext);
+
+  const hanldeSubmitForm = async (values, dataImg) => {
+    const categoriesId = values.categories.map((dataCategories) => {
+      return dataCategories._id;
+    });
+    const homesId = values.home.map((dataHome) => {
+      return dataHome._id;
+    });
+
+    const prepareDataToProduct = {
+      ...values,
+      categories: categoriesId,
+      homesId,
+      images: dataImg,
+    };
+
+    const saveNewproduct = await post(`/api/product/`, prepareDataToProduct);
+
+    console.log({ saveNewproduct });
+  };
+
+  const getAllCategories = async () => {
+    const getAllCategories = await get("/api/categories");
+
+    //TODO: Agregar Toast de ERROR
+    if (!getAllCategories.ok) return alert("error");
+
+    return getAllCategories;
+  };
+
+  const getUserHome = async (userId) => {
+    const getUserHome = await get(`/api/homes/user/${userId}`);
+
+    //TODO: Agregar Toast de ERROR
+    if (!getUserHome.ok) return alert("error");
+
+    return getUserHome.foundUser;
+  };
+
   return (
-    <div style={{ maxWidth: "100%", maxHeight: "100%", borderRadius: '1%' }}>
-      <Dialog
-        fullScreen
-        style={{
-          width: "90%",
-          height: "90%",
-          margin: "auto",
-          justifyContent: 'center',
-        }}
-        onClose={handleClosetModalArticle}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-        <div style={{ display: 'flex', justifyContent: 'space-evenly'}}>
-
-            <div>
-            <Paper style={{width: '3rem', height: '4rem', background: 'blue'}} />
-            </div>
-            <div>
-            <Paper style={{width: '3rem', height: '4rem', background: 'black'}} />
-            </div>
-
-        </div>
-      </Dialog>
-    </div>
+    <ArticuloView
+      handleClosetModalArticle={handleClosetModalArticle}
+      open={open}
+      hanldeSubmitForm={hanldeSubmitForm}
+      getAllCategories={getAllCategories}
+      getUserHome={getUserHome}
+    />
   );
 };

@@ -20,6 +20,7 @@ const ModalAvatarUI = (props) => {
   const [file, setFile] = useState("");
 
 
+
   const onImageChange = async (encodedPicture) => {
     const newEncodedPicture = await resizeEncodedPicture(
       encodedPicture,
@@ -27,7 +28,6 @@ const ModalAvatarUI = (props) => {
       150
     );
 
-    console.log(newEncodedPicture)
     setImg(newEncodedPicture);
   };
 
