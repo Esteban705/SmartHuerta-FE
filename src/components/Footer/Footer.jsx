@@ -80,7 +80,7 @@ const Footer = () => {
             {/* Div contenedor de CopyRight icon & info */}
 
             <div style={
-                {marginLeft: "50px"}
+                {marginLeft: "0.5rem"}
             }>
                 <a href="https://linkedin.com/smartgroup" target="_blank">
 
