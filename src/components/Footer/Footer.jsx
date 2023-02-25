@@ -1,14 +1,14 @@
 import React from 'react'
 import imagenes from '../About/imagenes';
 
+
 const Footer = () => {
     return (
+
         <div style={
             {
                 weight: "100%",
-
                 height: "100px",
-
                 backgroundColor: "#C0C9AF",
                 display: "grid",
                 gridTemplateRows: "100px 100px",
@@ -17,20 +17,23 @@ const Footer = () => {
 
             }
         }>
+            {/* div contenedor de redes sociales */}
             <div>
                 <p style={
                     {
                         color: "#1F7345",
                         fontSize: "20px",
                         textAlign: "center",
-                        marginTop: "20px"
+                        marginTop: "20px",
+                        fontWeight: "bold"
+
 
                     }
                 }>Redes sociales</p>
                 <div style={
                     {
                         display: "flex",
-                        paddingLeft: "158px"
+                        paddingLeft: "154px"
                     }
                 }>
                     <a href="https://instagram.com" target="_blank">
@@ -51,9 +54,7 @@ const Footer = () => {
                         <img style={
                                 {
                                     width: "40px",
-
                                     height: "40px"
-
                                 }
                             }
                             src={
@@ -74,15 +75,12 @@ const Footer = () => {
                             }/>
                     </a>
                 </div>
-
             </div>
 
-            {/* CopyRight icon & info */}
-            {/* <br/>
-            <br/>
-            <br/> */}
+            {/* Div contenedor de CopyRight icon & info */}
+
             <div style={
-                {}
+                {marginLeft: "50px"}
             }>
                 <a href="https://linkedin.com/smartgroup" target="_blank">
 
@@ -93,8 +91,6 @@ const Footer = () => {
                             textAlign: "center",
                             marginTop: "50px",
                             fontWeight: "bold"
-
-
                         }
                     }>Todos los derechos Reservados<img style={
                                 {
@@ -110,14 +106,19 @@ const Footer = () => {
                     </p>
                 </a>
             </div>
-            <div>
+            {/* Div contenedor de informacion de contacto */}
+            <div style={
+                {
+                    marginLeft: "10px",
+                    marginTop: "18px"
+                }
+            }>
                 <p style={
                     {
                         color: "#1F7345",
-                        fontSize: "20px",
+                        fontSize: "18px",
                         textAlign: "center",
-                        marginTop: "20px"
-
+                        fontWeight: "bold"
 
                     }
                 }>Contactanos</p>
@@ -127,8 +128,6 @@ const Footer = () => {
                         color: "#1F7345",
                         fontSize: "15px",
                         marginLeft: "115px"
-
-
                     }
                 }>Email: smarthuerta@info.com</p>
                 <p style={
@@ -137,8 +136,6 @@ const Footer = () => {
                         color: "#1F7345",
                         fontSize: "15px",
                         marginLeft: "115px"
-
-
                     }
                 }>Whatsapp de la comunidad: 3939438498</p>
 
