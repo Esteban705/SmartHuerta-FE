@@ -31,7 +31,7 @@ export const HttpMethods = ({ children }) => {
    const put = async (url, body) => {
     try {
       setLoading(true)
-      const {data} = await axios.put(
+      const data = await axios.put(
         `${process.env.REACT_APP_BASE_URL}${url}`,
         body
       );
