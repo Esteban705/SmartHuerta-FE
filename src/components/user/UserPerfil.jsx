@@ -10,14 +10,14 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useContext } from "react";
-import { UserContext, UserMethods } from "../Context/useContext";
+import { UserContext } from "../Context/useContext";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { colorButton } from "../Login/Styles/LoginStyles";
-import { Pagination } from "@material-ui/lab";
-import CardProduct from "./components/cardProduct/CardProduct";
+// import { Pagination } from "@material-ui/lab";
 import CardAddNewProduct from "./components/cardProduct/CardAddNewProduct";
 import globalStyles from "../GlobalStyles/globalStyles";
 import EditProfileUserPage from "./components/editProfile/EditProfileUserPage";
+import CardProduct from "./components/cardProduct/CardProduct";
 
 const UserPerfil = () => {
   const { getUserData, dataUser } = useContext(UserContext);
@@ -142,13 +142,9 @@ const UserPerfil = () => {
           {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
             <Grid item>
               <CardProduct />
+              {/* <div>ASD</div> */}
             </Grid>
           ))}
-
-          {/* <div>
-            <Pagination count={3} variant="outlined" shape="rounded" />
-            <Button variant="contained">Cargar Mas Productos</Button>
-          </div> */}
         </Grid>
       </Paper>
     </Container>

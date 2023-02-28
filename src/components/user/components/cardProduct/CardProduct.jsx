@@ -1,54 +1,61 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@material-ui/core";
 
 const CardProduct = () => {
-  const useStyles = makeStyles(() => ({
+  const useStyles = {
     root: {
       maxWidth: "16rem",
-      height: '22rem',
+      height: "22rem",
       padding: "0.2rem",
       margin: "0.5rem 0",
       borderRadius: "0.5rem",
-      '&:hover': {
-        transform: 'scale(1.05)',
+      "&:hover": {
+        transform: "scale(1.05)",
       },
     },
     media: {
-      height: 0,
-      paddingTop: "56.25%", // 16:9
+      borderRadius: "0.5rem",
+      height: "45%",
+      paddingTop: "0.5rem", // 16:9
     },
     content: {
       padding: "0 1rem",
     },
-  }));
-
-  const classes = useStyles();
+    actionsButtons:{
+      position: "relative",
+      top: "2rem"
+    }
+  };
 
   return (
     <button>
-      <Card className={classes.root}>
+      <Card sx={{ maxWidth: 345 }} style={useStyles.root}>
         <CardMedia
-          className={classes.media}
-          image="https://soycomocomo.es/media/2016/06/lechuga.jpg"
-          // image="/static/images/cards/paella.jpg"
-          title="Vendo Lechuga pa"
+          style={useStyles.media}
+          component="img"
+          image="https://t1.uc.ltmcdn.com/es/posts/6/6/4/que_vitaminas_tiene_la_manzana_51466_orig.jpg"
+          alt="Manzana"
         />
-        <CardHeader
-          title="Vendo Lechuga pa' "
-          subheader="September 14, 2016"
-        />
-        <CardContent className={classes.content}>
-          <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+        <CardContent style={useStyles.content}>
+          <Typography variant="h6" component="div" align="left">
+            Se cambian Manzanas
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
           </Typography>
         </CardContent>
+
+        <CardActions style={useStyles.actionsButtons} >
+          <Button size="small">Ver mas</Button>
+        </CardActions>
       </Card>
     </button>
   );

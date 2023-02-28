@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Card } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
 import ModalCreateNewProduct from "./ModalCreateNewProduct";
+import { Card, Typography } from "@material-ui/core";
 
 const CardAddNewProduct = () => {
-  const useStyles = makeStyles(() => ({
+  const useStyles = {
     root: {
       width: "16rem",
       height: "22rem",
@@ -19,9 +17,9 @@ const CardAddNewProduct = () => {
         opacity: "1",
       },
     },
-  }));
+  };
 
-  const classes = useStyles();
+  // const classes = useStyles();
   const [openModalCreateProduct, setOpenModalCreateProduct] = useState(false);
 
   const handleClickOpenModal = () => {
@@ -35,8 +33,8 @@ const CardAddNewProduct = () => {
   return (
     <>
       <button onClick={handleClickOpenModal}>
-        <Card className={classes.root}>
-          <Typography variant="h1"style={{color:'white'}}>
+        <Card sx={{ maxWidth: 345 }} style={useStyles.root}>
+        <Typography variant="h1"style={{color:'white'}}>
             +
           </Typography>
           <Typography variant="h5"style={{color:'white'}}>

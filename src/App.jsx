@@ -8,32 +8,29 @@ import { HouseMethods } from "./components/Context/houseContext";
 import Login from "./components/Login/LoginUi";
 import { MapPage } from "./components/map/MapPage";
 import UserPerfil from "./components/user/UserPerfil";
-import Navbar from "./components/Navigation/Navbar"
-
+import Navbar from "./components/Navigation/Navbar";
 
 function App() {
   return (
     <HttpMethods>
       <UserMethods>
-        <Router>
-          <Navbar />
-          {/* <Switch> */}
-            <Route path="/login">
-              <Login />
-            </Route>
-            <div style={{ marginTop: "4rem", height: "calc(100vh - 65px)" }}>
-              <Route path="/Mapa">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/map"
+            element={
+              <HouseMethods>
                 <MapPage />
-              </Route>
-              <Route path="/Perfil">
-                <UserPerfil />
-              </Route>
-            </div>
-          {/* </Switch> */}
-        </Router>
+              </HouseMethods>
+            }
+          />
+          <Route path="/Perfil" element={<UserPerfil />} />
+        </Routes>
       </UserMethods>
     </HttpMethods>
   );
 }
 
 export default App;
+
