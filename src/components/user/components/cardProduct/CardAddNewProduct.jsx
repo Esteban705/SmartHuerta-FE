@@ -1,6 +1,6 @@
+import { Card, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import ModalCreateNewProduct from "./ModalCreateNewProduct";
-import { Card, Typography } from "@material-ui/core";
 
 const CardAddNewProduct = () => {
   const useStyles = {

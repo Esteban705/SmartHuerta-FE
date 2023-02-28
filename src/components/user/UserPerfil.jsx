@@ -23,7 +23,11 @@ const UserPerfil = () => {
   const { getUserData, dataUser } = useContext(UserContext);
 
   const dataOfUser = dataUser();
+  const [open, setOpen] = useState(false)
 
+  const handleClosetModalArticle = () => {
+    setOpen(false)
+  }
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
   const [userData, setUserData] = useState();
 
@@ -42,7 +46,6 @@ const UserPerfil = () => {
 
 
   useEffect(() => {
-    console.log("puta que lo pario");
     getUsarData();
   }, []);
 
@@ -142,7 +145,6 @@ const UserPerfil = () => {
           {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
             <Grid item>
               <CardProduct />
-              {/* <div>ASD</div> */}
             </Grid>
           ))}
         </Grid>

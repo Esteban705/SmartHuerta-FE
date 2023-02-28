@@ -5,8 +5,6 @@ import "leaflet/dist/leaflet.css";
 import { toast, Toaster } from "react-hot-toast";
 import { UserIntroduction } from "../user/UserIntroduction";
 import { validationHomesByUser } from "./validation/validationHome";
-import "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css";
-import { geosearch } from "esri-leaflet-geocoder";
 import HouseIcon from "@material-ui/icons/House";
 import { buttonMyHome, mapContainer } from "./mapStyles/MapStyles";
 import { UserContext } from "../Context/useContext";
@@ -24,24 +22,6 @@ const MapView = ({
   const [deleteHome, setDeleteHome] = useState(false);
   const dataOfUser = dataUser();
 
-  const mapRef = useRef();
-
-  const control = geosearch();
-
-  useEffect(() => {
-    const { current = {} } = mapRef;
-    const { leafletElement: map } = current;
-
-    if (!map) return;
-
-    control.addTo(map);
-    control.on("results", handleOnSearchResuts);
-    control.off("results", handleOnSearchResuts);
-  }, );
-
-  const handleOnSearchResuts = (data) => {
-    console.log("Searchlts", data);
-  };
 
   const getAllHomes = async (currentLocation) => {
     const { data } = await getHome();
@@ -121,7 +101,6 @@ const MapView = ({
         style={mapContainer}
         zoom={dataHome.zoom}
         ondblclick={registerNewHome}
-        ref={mapRef}
       >
         <Markers
           getAllHomes={getAllHomes}

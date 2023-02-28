@@ -17,6 +17,8 @@ import { Link } from "react-router-dom";
 const AvatarOptions = ({ userData }) => {
   const [openOptions, setOpenOptions] = useState(null);
 
+  console.log(userData, 'userData')
+
   const handleClickOpenOptions = (event) => {
     setOpenOptions(event.currentTarget);
   };
@@ -38,7 +40,7 @@ const AvatarOptions = ({ userData }) => {
           style={{ backgroundColor: "green" }}
           onClick={() => console.log("touched")}
         >
-          {userData.name.slice(0, 2).toUpperCase()}
+          {userData?.name?.slice(0, 2).toUpperCase()}
         </Avatar>
       </IconButton>
       <Menu

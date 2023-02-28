@@ -27,6 +27,7 @@ const MarkerPopup = ({ venue, deleteHome }) => {
   const [value, setValue] = useState(2);
   const { dataUser } = useContext(UserContext);
 
+  
   const navigate = useNavigate();
 
   const dataOfUser = dataUser();
