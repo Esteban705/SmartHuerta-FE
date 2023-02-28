@@ -27,7 +27,7 @@ const Navbar = () => {
   // console.log(getUserData());
 
   return (
-    <AppBar color="white">
+    <AppBar color="inherit">
       <Container maxWidth="xl">
         <Toolbar disableGutters style={toolbarXl}>
           {isMatch ? (

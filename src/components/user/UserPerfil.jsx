@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Button,
@@ -13,22 +13,23 @@ import { useContext } from "react";
 import { UserContext } from "../Context/useContext";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { colorButton } from "../Login/Styles/LoginStyles";
-import { Pagination } from "@material-ui/lab";
-import { ArticuloPage } from "../articulos/ArticuloPage";
-import CardProduct from "./components/cardProduct/CardProduct";
+// import { Pagination } from "@material-ui/lab";
 import CardAddNewProduct from "./components/cardProduct/CardAddNewProduct";
 import globalStyles from "../GlobalStyles/globalStyles";
 import EditProfileUserPage from "./components/editProfile/EditProfileUserPage";
+import CardProduct from "./components/cardProduct/CardProduct";
 
 const UserPerfil = () => {
-  const { dataUser } = useContext(UserContext);
+  const { getUserData, dataUser } = useContext(UserContext);
+
+  const dataOfUser = dataUser();
   const [open, setOpen] = useState(false)
-  const userData = dataUser();
 
   const handleClosetModalArticle = () => {
     setOpen(false)
   }
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
+  const [userData, setUserData] = useState();
 
   const handleOpenProfilModal = () => {
     setOpenEditProfileModal(true);
@@ -37,6 +38,20 @@ const UserPerfil = () => {
     setOpenEditProfileModal(false);
   };
 
+  const getUsarData = async () => {
+    const data = await getUserData(dataOfUser.id);
+    setUserData(data);
+    return data;
+  };
+
+
+  useEffect(() => {
+    getUsarData();
+  }, []);
+
+  console.log("userData", userData);
+
+  getUserData(dataOfUser.id);
   return (
     <Container style={{ padding: "1rem" }}>
       <Paper variant={10} style={{ padding: "2rem" }}>
@@ -60,7 +75,7 @@ const UserPerfil = () => {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="h6" component="div">
-                  {userData.name.toUpperCase()}
+                  {/* {userData.name.toUpperCase()} */}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
@@ -132,16 +147,6 @@ const UserPerfil = () => {
               <CardProduct />
             </Grid>
           ))}
-
-          <div>
-            {/* <Pagination count={3} variant="outlined" shape="rounded" /> */}
-            <Button variant="contained" onClick={() => setOpen(true)}>Cargar Mas Productos</Button>
-          </div>
-          <ArticuloPage open={open} handleClosetModalArticle={handleClosetModalArticle}/>
-          {/* <div>
-            <Pagination count={3} variant="outlined" shape="rounded" />
-            <Button variant="contained">Cargar Mas Productos</Button>
-          </div> */}
         </Grid>
       </Paper>
     </Container>
