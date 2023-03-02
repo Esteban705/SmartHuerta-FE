@@ -1,31 +1,22 @@
 import {
   Button,
   Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   DialogActions,
   Typography,
-  Box,
   Grid,
   TextField,
-  InputLabel,
-  CardMedia,
   Divider,
-  Paper,
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import React from "react";
-import GreenButton from "../../../../shared/helpers/GreenButton";
 import globalStyles from "../../../GlobalStyles/globalStyles";
+
 const ModalCreateNewProduct = ({
   handleCloseModal,
   openModalCreateProduct,
 }) => {
-
   return (
     <Dialog
-      // width
       maxWidth={"80vw"}
       open={openModalCreateProduct }
       onClose={handleCloseModal}
@@ -75,7 +66,7 @@ const ModalCreateNewProduct = ({
               style={{ paddingTop: "1rem", paddingBottom: "0.3rem" }}
               label="Multiline"
               multiline
-              rows={8}
+              minRows={8}
               defaultValue={""}
               variant="outlined"
             />

@@ -15,13 +15,15 @@ import {
 } from "@material-ui/core";
 import { PhotoCamera } from "@material-ui/icons";
 import { Autocomplete } from "@material-ui/lab";
-import React from "react";
+import React, { useState } from "react";
 import globalStyles from "../../../GlobalStyles/globalStyles";
 
 const EditProfileUserUI = ({
   openEditProfileModal,
   handleCloseModalProfile,
 }) => {
+
+  const [imagenPerfil, setImagenPerfil] = useState()
   return (
     <Dialog
     style={{}}
@@ -124,7 +126,7 @@ const EditProfileUserUI = ({
             style={{ paddingTop: "1rem", paddingBottom: "0.3rem" }}
             label="Descripcion"
             multiline
-            rows={4}
+            minRows={4}
             defaultValue={""}
             variant="outlined"
           />

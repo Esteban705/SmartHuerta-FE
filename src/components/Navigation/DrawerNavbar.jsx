@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-
+import React,{ useState } from "react";
 import { buttonNavStyles } from "../Navigation/styles/NavbarStyles";
 import MenuIcon from "@material-ui/icons/Menu";
 import {
@@ -14,7 +12,6 @@ import {
   ListItemText,
   Typography,
   MenuItem,
-  Link,
 } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import Settings from "@material-ui/icons/Settings";
@@ -104,7 +101,7 @@ const DrawerNavbar = ({ pages, userData }) => {
         >
           <MenuIcon style={{ color: "black" }} />
           <Typography
-            variant="h7"
+            variant="h6"
             style={{ paddingLeft: "1rem", alignItems: "center" }}
           >
             LOGO SMARTHUERTA

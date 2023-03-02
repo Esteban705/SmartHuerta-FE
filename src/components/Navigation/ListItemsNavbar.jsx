@@ -28,7 +28,7 @@ const ListItemsNavbar = ({ pages, userData }) => {
       <div style={{ display: "flex" }}>
         <Button sx={buttonNavStyles}>
           <Typography
-            variant="h7"
+            variant="h6"
             style={{
               paddingLeft: "1rem",
               alignItems: "center",
@@ -78,12 +78,15 @@ const ListItemsNavbar = ({ pages, userData }) => {
             </Typography>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
-                <MailIcon />
+                <MailIcon color="action" />
               </Badge>
+              {/* <Badge badgeContent={4} color="secondary">
+                <MailIcon />
+              </Badge> */}
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+                <NotificationsIcon color="action"/>
               </Badge>
             </IconButton>
             <AvatarOptions userData={userData} />
