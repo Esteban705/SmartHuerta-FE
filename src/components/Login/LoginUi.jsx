@@ -35,7 +35,8 @@ const LoginUi = () => {
 
   const registerUser = async (body) => {
     try {
-      const data = await post("/api/auth/new", body);
+      const {data} = await post("/api/auth/new", body);
+
       const userRegister = {
         ...data,
         isNew: true,
@@ -50,10 +51,10 @@ const LoginUi = () => {
 
   const loginUser = async (body) => {
     try {
-      const userData = await post("/api/auth/", body);
-      
-      saveUser(userData)
-      return userData;
+      const {data} = await post("/api/auth/", body);
+      console.log(data)
+      saveUser(data)
+      return data;
     } catch (error) {
       console.log(error, "rror");
       window.alert("Error en el sistema");

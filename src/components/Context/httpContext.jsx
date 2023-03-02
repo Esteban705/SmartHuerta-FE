@@ -9,7 +9,7 @@ export const HttpContext = createContext();
 export const HttpMethods = ({ children }) => {
 
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   
    const post = async (url, body) => {
@@ -31,7 +31,7 @@ export const HttpMethods = ({ children }) => {
    const put = async (url, body) => {
     try {
       setLoading(true)
-      const {data} = await axios.put(
+      const data = await axios.put(
         `${process.env.REACT_APP_BASE_URL}${url}`,
         body
       );

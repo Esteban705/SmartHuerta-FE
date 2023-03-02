@@ -20,10 +20,24 @@ export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
       images: dataImg,
     };
 
-    const saveNewproduct = await post(`/api/product/`, prepareDataToProduct);
+    console.log({prepareDataToProduct})
 
-    console.log({ saveNewproduct });
+   /*  const saveNewproduct = await post(`/api/product/`, prepareDataToProduct);
+
+    if(!saveNewproduct.ok) return console.log('error') */
   };
+
+
+
+  const getProduct = async (productId) => {
+    const getProductById = await get(`/api/product/${productId}`);
+
+    //TODO: Agregar Toast de ERROR
+    if (!getProductById.ok) return alert("error");
+
+    return getProductById;
+  };
+
 
   const getAllCategories = async () => {
     const getAllCategories = await get("/api/categories");
@@ -50,6 +64,7 @@ export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
       hanldeSubmitForm={hanldeSubmitForm}
       getAllCategories={getAllCategories}
       getUserHome={getUserHome}
+      getProduct={getProduct}
     />
   );
 };
