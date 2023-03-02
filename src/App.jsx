@@ -11,6 +11,7 @@ import UserPerfil from "./components/user/UserPerfil";
 import Navbar from "./components/Navigation/Navbar"
 import PageNotFound from "./utils/PageNotFound";
 import AboutUs from "./components/About/AboutUs";
+import Products from "./components/Products/Products";
 
 
 function App() {
@@ -55,7 +56,12 @@ function App() {
 
                             <Route path="aboutus"
                                 element={<AboutUs/>}></Route>
+
+                            <Route path="products"
+                                element={<Products/>}></Route>
+
                         </Routes>
+
                     </div>
                 </>
             } </UserMethods>
