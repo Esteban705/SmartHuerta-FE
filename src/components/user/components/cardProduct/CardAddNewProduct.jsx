@@ -1,5 +1,6 @@
 import { Card, Typography } from "@material-ui/core";
 import React, { useState } from "react";
+import { ArticuloPage } from "../../../articulos/ArticuloPage";
 import ModalCreateNewProduct from "./ModalCreateNewProduct";
 
 const CardAddNewProduct = () => {
@@ -34,18 +35,22 @@ const CardAddNewProduct = () => {
     <>
       <button onClick={handleClickOpenModal}>
         <Card sx={{ maxWidth: 345 }} style={useStyles.root}>
-        <Typography variant="h1"style={{color:'white'}}>
+          <Typography variant="h1" style={{ color: "white" }}>
             +
           </Typography>
-          <Typography variant="h5"style={{color:'white'}}>
+          <Typography variant="h5" style={{ color: "white" }}>
             Agregar un producto
           </Typography>
         </Card>
       </button>
-      <ModalCreateNewProduct
+      <ArticuloPage
+       open={openModalCreateProduct}
+       handleClosetModalArticle={handleCloseModal}
+      />
+     {/*  <ModalCreateNewProduct
         openModalCreateProduct={openModalCreateProduct}
         handleCloseModal={handleCloseModal}
-      />
+      /> */}
     </>
   );
 };
