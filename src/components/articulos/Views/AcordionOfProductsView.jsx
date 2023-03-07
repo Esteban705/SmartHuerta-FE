@@ -17,7 +17,7 @@ export const AcordionOfProductsView = ({ dataImg }) => {
   const showImage = dataImg.map((img, key) => {
     return {
       key,
-      src: img.newEncodedPicture,
+      src: img.newEncodedPicture ?? img.dataImg,
       style: { pointerEvents: "none", heigth: "30rem", width: "100%" },
       altText: "Cebolla",
       caption: "Cebolla",

@@ -17,7 +17,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import Settings from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AutorenewIcon from '@material-ui/icons/Autorenew';
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 // import AvatarUser from "../user/avatar/AvatarUser";
 
 // const actions = ["Loguin", "Logout"];
@@ -38,21 +38,21 @@ const DrawerNavbar = ({ pages, userData }) => {
       <Drawer open={openDrawer} onClose={handleCloseDrawer}>
         <List style={{ width: "15rem", paddingInline: "1rem" }}>
           {pages.map((page, index) => (
-            <Link
+/*             <Link
               key={index}
               to={`/${page}`.trim()}
               style={{ textDecoration: "none", color: "black" }}
-            >
+            > */
               <ListItem onClick={handleCloseDrawer}>
                 <ListItemIcon>
                   <ListItemText>{page}</ListItemText>
                 </ListItemIcon>
               </ListItem>
-            </Link>
+         /*    </Link> */
           ))}
           <Divider />
           {userData ? (
-            <Link to={"/Perfil".trim()}>
+            <div>
               <MenuItem
               // onClick={() => {
               //   console.log("abrir perfil");
@@ -87,7 +87,7 @@ const DrawerNavbar = ({ pages, userData }) => {
                   Logout
                 </ListItemIcon>
               </MenuItem>
-            </Link>
+            </div>
           ) : null}
         </List>
       </Drawer>

@@ -9,7 +9,7 @@ export const HttpContext = createContext();
 export const HttpMethods = ({ children }) => {
 
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   
    const post = async (url, body) => {

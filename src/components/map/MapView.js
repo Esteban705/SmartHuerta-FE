@@ -64,6 +64,7 @@ const MapView = ({
   
 
   const registerNewHome = async (e) => {
+    debugger
     const { lat, lng } = e.latlng;
     const newVenue = {
       name: dataOfUser.name,
@@ -81,7 +82,7 @@ const MapView = ({
 
     const registerHomeUser = await registerHome(newVenue);
 
-    if (!registerHomeUser.ok) {
+    if (!registerHomeUser.data.ok) {
       return;
     }
 
