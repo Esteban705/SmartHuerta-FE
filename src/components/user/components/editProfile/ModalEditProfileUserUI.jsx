@@ -3,30 +3,49 @@ import {
   Button,
   Dialog,
   DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   Divider,
   Grid,
-  IconButton,
-  Paper,
+  makeStyles,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import { PhotoCamera } from "@material-ui/icons";
-import { Autocomplete } from "@material-ui/lab";
 import React, { useState } from "react";
 import globalStyles from "../../../GlobalStyles/globalStyles";
 
+
+const useStyles = makeStyles((theme) => ({
+  imgProfile: {
+    width: "10rem",
+    height: "10rem",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  leterProfile:{
+    width: "10rem",
+    height: "10rem",
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "green "
+  }
+}))
+
 const EditProfileUserUI = ({
+  userData,
   openEditProfileModal,
   handleCloseModalProfile,
 }) => {
+  const [imagenPerfil, setImagenPerfil] = useState();
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
+  const classes = useStyles();
 
-  const [imagenPerfil, setImagenPerfil] = useState()
+
   return (
     <Dialog
-    style={{}}
+      style={{}}
       // open={true}
       open={openEditProfileModal}
       onClose={handleCloseModalProfile}
@@ -39,24 +58,22 @@ const EditProfileUserUI = ({
         }}
       >
         <Grid item>
-          {/* Poner una condicion, si el ususario tiene foto renderiza este avatar sino renderiza el de la letra
-              que es el de abajo que esta comentado*/}
-          <Avatar
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8iVTbxjuWrbh4TKqQq7N_i51ftTZsY9y4WA&usqp=CAU"
-            // src={`${userData.ImgProfileUri}`}
-            style={{
-              width: "10rem",
-              height: "10rem",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          />
-
-          {/* <Avatar
-                style={{ width: "10rem", height: "10rem" }}
-              >
-                <Typography variant="h1">{userData.name.slice(0, 2).toUpperCase()}</Typography>
-              </Avatar> */}
+          {userData?.usuario.imgId ? (
+            <Avatar
+              src={userData?.usuario.imgId}
+              className={classes.imgProfile}
+              // style={userPerfilStyles.imgProfile}
+            />
+          ) : (
+            <Avatar
+              // style={userPerfilStyles.leterProfile}
+              className={classes.leterProfile}
+            >
+              <Typography variant="h1">
+                {userData?.usuario.name.slice(0, 2).toUpperCase()}
+              </Typography>
+            </Avatar>
+          )}
         </Grid>
         <Grid
           item
@@ -66,10 +83,6 @@ const EditProfileUserUI = ({
             margin: "0.5rem",
           }}
         >
-          {/* <Button style={{ fontWeight: "bold" }}>
-          
-          Editar Foto
-          </Button> */}
           <input
             // accept="image/*"
             style={{ display: "none" }}
@@ -88,11 +101,7 @@ const EditProfileUserUI = ({
         </Grid>
       </Grid>
 
-      <Grid
-        spacing={2}
-        justifyContent="center"
-        style={{ padding: "2rem" }}
-      >
+      <Grid spacing={2} justifyContent="center" style={{ padding: "2rem" }}>
         <Typography
           variant="h5"
           color="initial"
@@ -108,8 +117,10 @@ const EditProfileUserUI = ({
               paddingBottom: "0.3rem",
               color: "black",
             }}
-            label="Nombre"
-            placeholder="Nombre"
+            label="Email"
+            placeholder="Email"
+            value={userData?.usuario.email}
+            disabled={true}
           />
           <TextField
             fullWidth
@@ -120,6 +131,7 @@ const EditProfileUserUI = ({
             }}
             label="Nombre de usuario"
             placeholder="Nombre de usuario"
+            value={userData?.usuario.name}
           />
           <TextField
             fullWidth
@@ -127,7 +139,7 @@ const EditProfileUserUI = ({
             label="Descripcion"
             multiline
             minRows={4}
-            defaultValue={""}
+            defaultValue={userData?.usuario.description}
             variant="outlined"
           />
           <div

@@ -1,12 +1,13 @@
 import React from "react";
-import EditProfileUserUI from "./EditProfileUserUI";
+import ModalEditProfileUserUI from "./ModalEditProfileUserUI";
 
 const EditProfileUserPage = ({
   openEditProfileModal,
-  handleCloseModalProfile,
+  handleCloseModalProfile,userData
 }) => {
   return (
-    <EditProfileUserUI
+    <ModalEditProfileUserUI
+    userData={userData}
       openEditProfileModal={openEditProfileModal}
       handleCloseModalProfile={handleCloseModalProfile}
     />

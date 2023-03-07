@@ -8,28 +8,35 @@ import {
   Grid,
   Paper,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import { useContext } from "react";
 import { UserContext } from "../Context/useContext";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { colorButton } from "../Login/Styles/LoginStyles";
-// import { Pagination } from "@material-ui/lab";
-import CardAddNewProduct from "./components/cardProduct/CardAddNewProduct";
-import globalStyles from "../GlobalStyles/globalStyles";
-import EditProfileUserPage from "./components/editProfile/EditProfileUserPage";
-import CardProduct from "./components/cardProduct/CardProduct";
+import CardAddNewProduct from "../Products/cardProduct/CardAddNewProduct";
+import ModalEditUserProfile from "./components/editProfile/ModalEditUserProfile";
+import CardProduct from "../Products/cardProduct/CardProduct";
+import { userPerfilStyles } from "./styles/userPerfilStyles";
 
 const UserPerfil = () => {
+  // const { getUserData, dataUser } = useContext(UserContext);
+  // const dataOfUser = dataUser();
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
+  const classes = userPerfilStyles();
+
   const { getUserData, dataUser } = useContext(UserContext);
-
+  const [open, setOpen] = useState(false);
   const dataOfUser = dataUser();
-  const [open, setOpen] = useState(false)
 
-  const handleClosetModalArticle = () => {
-    setOpen(false)
-  }
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
   const [userData, setUserData] = useState();
+
+  const handleClosetModalArticle = () => {
+    setOpen(false);
+  };
 
   const handleOpenProfilModal = () => {
     setOpenEditProfileModal(true);
@@ -44,87 +51,122 @@ const UserPerfil = () => {
     return data;
   };
 
-
   useEffect(() => {
     getUsarData();
   }, []);
 
   console.log("userData", userData);
+  console.log("imgId", userData?.usuario.name);
 
   getUserData(dataOfUser.id);
   return (
-    <Container style={{ padding: "1rem" }}>
-      <Paper variant={10} style={{ padding: "2rem" }}>
-        <Grid container spacing={2} style={{ marginBottom: "2rem" }}>
+    <Container className={classes.deskstopRoots}>
+      <Paper
+        variant={10}
+        className={isMatch ? classes.mobilePaper : classes.deskPaper}
+      >
+        <Grid
+          container
+          spacing={2}
+          className={
+            isMatch
+              ? classes.mobileUserDataContainer
+              : classes.deskUserDataContainer
+          }
+        >
           <Grid item>
             {/* Poner una condicion, si el ususario tiene foto renderiza este avatar sino renderiza el de la letra
               que es el de abajo que esta comentado*/}
-            <Avatar
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8iVTbxjuWrbh4TKqQq7N_i51ftTZsY9y4WA&usqp=CAU"
-              // src={`${userData.ImgProfileUri}`}
-              style={{ width: "10rem", height: "10rem" }}
-            />
 
-            {/* <Avatar
+            {userData?.usuario.imgId ? (
+              <Avatar
+                src={userData?.usuario.imgId}
                 style={{ width: "10rem", height: "10rem" }}
+              />
+            ) : (
+              <Avatar
+                style={{
+                  width: "10rem",
+                  height: "10rem",
+                  backgroundColor: "green ",
+                }}
               >
-                <Typography variant="h1">{userData.name.slice(0, 2).toUpperCase()}</Typography>
-              </Avatar> */}
+                <Typography variant="h1">
+                  {userData?.usuario.name.slice(0, 2).toUpperCase()}
+                </Typography>
+              </Avatar>
+            )}
           </Grid>
-          <Grid item xs={12} sm container>
+          <Grid
+            item
+            xs={12}
+            sm
+            container
+            className={classes.mobileInfoUser}
+          >
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="h6" component="div">
-                  {/* {userData.name.toUpperCase()} */}
+                  {userData?.usuario.name.toUpperCase() || "undefined user"}
                 </Typography>
-                <Typography variant="body1" gutterBottom>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-                  magni eum recusandae totam, delectus voluptate. Minus, maiores
-                  voluptatem saepe esse accusantium assumenda atque, sint
-                  nesciunt ad tempore architecto. Nulla provident aperiam
+                <Typography
+                  variant="body1"
+                  gutterBottom
+                  style={{ padding: "0.5rem 0 0.5rem 1.5rem" }}
+                >
+                  {userData?.usuario.description.toUpperCase() ||
+                    "Sin descripcion..."}
                 </Typography>
               </Grid>
+              {/* Contador de seguidores productos y trueques */}
               <Grid item container direction="row">
                 <Typography
                   variant="body2"
-                  style={{ marginRight: "2rem", fontWeight: "bold" }}
+                  className={
+                    isMatch ? classes.mobileCounters : classes.deskCounters
+                  }
                 >
                   <Chip label="Seguidores : 10" variant="outlined" />
                 </Typography>
                 <Typography
                   variant="body2"
-                  style={{ marginRight: "2rem", fontWeight: "bold" }}
+                  className={
+                    isMatch ? classes.mobileCounters : classes.deskCounters
+                  }
                 >
                   <Chip label="Productos : 5" variant="outlined" />
                 </Typography>
                 <Typography
                   variant="body2"
-                  style={{ marginRight: "2rem", fontWeight: "bold" }}
+                  className={
+                    isMatch ? classes.mobileCounters : classes.deskCounters
+                  }
                 >
-                  <Chip label="Trueques Realizados : 14" variant="outlined" />
+                  <Chip label="Trueques : 14" variant="outlined" />
                 </Typography>
               </Grid>
             </Grid>
-
-            <Grid item>
-              <Button
-                variant="contained"
-                style={colorButton}
-                endIcon={<SettingsIcon />}
-                onClick={handleOpenProfilModal}
+          </Grid>
+          {/* editar perfil */}
+          <Grid item>
+            <Button
+              variant="contained"
+              style={colorButton}
+              endIcon={<SettingsIcon />}
+              onClick={handleOpenProfilModal}
+            >
+              <Typography
+                sx={{ cursor: "pointer" }}
+                variant="button"
+                style={{ fontWeight: "bold" }}
               >
-                <Typography
-                  sx={{ cursor: "pointer" }}
-                  variant="button"
-                  style={{ fontWeight: "bold" }}
-                >
-                  EDITAR PERFIL
-                </Typography>
-              </Button>
-            </Grid>
+                EDITAR PERFIL
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
-        <EditProfileUserPage
+        <ModalEditUserProfile
+          userData={userData}
           openEditProfileModal={openEditProfileModal}
           handleCloseModalProfile={handleCloseModalProfile}
         />
@@ -132,10 +174,7 @@ const UserPerfil = () => {
         <Divider />
 
         <Grid
-          style={{
-            backgroundColor: `${globalStyles.backgroundColorFooter}`,
-            marginTop: "1rem",
-          }}
+        className={isMatch ? classes.CardProductsContainer : classes.deskCardProductsContainer}
           container
           justifyContent="space-evenly"
         >
@@ -144,7 +183,11 @@ const UserPerfil = () => {
           </Grid>
           {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
             <Grid item>
-              <CardProduct />
+              <CardProduct
+                productTittle={"manzanas"}
+                productDescription={"manzanas rojas ricas pa"}
+                productImages={""}
+              />
             </Grid>
           ))}
         </Grid>
