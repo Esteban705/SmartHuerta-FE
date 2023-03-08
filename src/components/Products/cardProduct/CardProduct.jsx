@@ -14,7 +14,6 @@ import {
 import productoSinImagen from "../../../assets/producto-sin-imagen.png";
 import { cardProductStyles } from "../Styles/CardProductsStyles";
 
-
 const CardProduct = ({ productTittle, productDescription, productImages }) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));

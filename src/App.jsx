@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
-            path="/map"
+            path="/Mapa"
             element={
               <HouseMethods>
                 <MapPage />

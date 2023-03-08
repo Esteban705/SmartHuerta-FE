@@ -16,13 +16,11 @@ import { UserContext } from "../Context/useContext";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { colorButton } from "../Login/Styles/LoginStyles";
 import CardAddNewProduct from "../Products/cardProduct/CardAddNewProduct";
-import ModalEditUserProfile from "./components/editProfile/ModalEditUserProfile";
+import ModalEditUserProfile from "./components/editProfile/ModalEditUserProfileServices";
 import CardProduct from "../Products/cardProduct/CardProduct";
 import { userPerfilStyles } from "./styles/userPerfilStyles";
 
 const UserPerfil = () => {
-  // const { getUserData, dataUser } = useContext(UserContext);
-  // const dataOfUser = dataUser();
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = userPerfilStyles();
@@ -55,144 +53,145 @@ const UserPerfil = () => {
     getUsarData();
   }, []);
 
-  console.log("userData", userData);
-  console.log("imgId", userData?.usuario.name);
-
-  getUserData(dataOfUser.id);
+  console.log("UserPerfil :>> ", userData);
   return (
-    <Container className={classes.deskstopRoots}>
-      <Paper
-        variant={10}
-        className={isMatch ? classes.mobilePaper : classes.deskPaper}
-      >
-        <Grid
-          container
-          spacing={2}
-          className={
-            isMatch
-              ? classes.mobileUserDataContainer
-              : classes.deskUserDataContainer
-          }
-        >
-          <Grid item>
-            {/* Poner una condicion, si el ususario tiene foto renderiza este avatar sino renderiza el de la letra
-              que es el de abajo que esta comentado*/}
-
-            {userData?.usuario.imgId ? (
-              <Avatar
-                src={userData?.usuario.imgId}
-                style={{ width: "10rem", height: "10rem" }}
-              />
-            ) : (
-              <Avatar
-                style={{
-                  width: "10rem",
-                  height: "10rem",
-                  backgroundColor: "green ",
-                }}
-              >
-                <Typography variant="h1">
-                  {userData?.usuario.name.slice(0, 2).toUpperCase()}
-                </Typography>
-              </Avatar>
-            )}
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm
-            container
-            className={classes.mobileInfoUser}
+    <>
+      {userData ? (
+        <Container className={classes.deskstopRoots}>
+          <Paper
+            variant={10}
+            className={isMatch ? classes.mobilePaper : classes.deskPaper}
           >
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="h6" component="div">
-                  {userData?.usuario.name.toUpperCase() || "undefined user"}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  gutterBottom
-                  style={{ padding: "0.5rem 0 0.5rem 1.5rem" }}
-                >
-                  {userData?.usuario.description.toUpperCase() ||
-                    "Sin descripcion..."}
-                </Typography>
-              </Grid>
-              {/* Contador de seguidores productos y trueques */}
-              <Grid item container direction="row">
-                <Typography
-                  variant="body2"
-                  className={
-                    isMatch ? classes.mobileCounters : classes.deskCounters
-                  }
-                >
-                  <Chip label="Seguidores : 10" variant="outlined" />
-                </Typography>
-                <Typography
-                  variant="body2"
-                  className={
-                    isMatch ? classes.mobileCounters : classes.deskCounters
-                  }
-                >
-                  <Chip label="Productos : 5" variant="outlined" />
-                </Typography>
-                <Typography
-                  variant="body2"
-                  className={
-                    isMatch ? classes.mobileCounters : classes.deskCounters
-                  }
-                >
-                  <Chip label="Trueques : 14" variant="outlined" />
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-          {/* editar perfil */}
-          <Grid item>
-            <Button
-              variant="contained"
-              style={colorButton}
-              endIcon={<SettingsIcon />}
-              onClick={handleOpenProfilModal}
+            <Grid
+              container
+              spacing={2}
+              className={
+                isMatch
+                  ? classes.mobileUserDataContainer
+                  : classes.deskUserDataContainer
+              }
             >
-              <Typography
-                sx={{ cursor: "pointer" }}
-                variant="button"
-                style={{ fontWeight: "bold" }}
+              <Grid item>
+                {userData?.usuario.imgId ? (
+                  <Avatar
+                    src={userData?.usuario.imgId.dataImg}
+                    style={{ width: "10rem", height: "10rem" }}
+                  />
+                ) : (
+                  <Avatar
+                    style={{
+                      width: "10rem",
+                      height: "10rem",
+                      backgroundColor: "green ",
+                    }}
+                  >
+                    <Typography variant="h1">
+                      {userData?.usuario.name.slice(0, 2).toUpperCase()}
+                    </Typography>
+                  </Avatar>
+                )}
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm
+                container
+                className={classes.mobileInfoUser}
               >
-                EDITAR PERFIL
-              </Typography>
-            </Button>
-          </Grid>
-        </Grid>
-        <ModalEditUserProfile
-          userData={userData}
-          openEditProfileModal={openEditProfileModal}
-          handleCloseModalProfile={handleCloseModalProfile}
-        />
-
-        <Divider />
-
-        <Grid
-        className={isMatch ? classes.CardProductsContainer : classes.deskCardProductsContainer}
-          container
-          justifyContent="space-evenly"
-        >
-          <Grid item>
-            <CardAddNewProduct />
-          </Grid>
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
-            <Grid item>
-              <CardProduct
-                productTittle={"manzanas"}
-                productDescription={"manzanas rojas ricas pa"}
-                productImages={""}
-              />
+                <Grid item xs container direction="column" spacing={2}>
+                  <Grid item xs>
+                    <Typography gutterBottom variant="h6" component="div">
+                      {userData?.usuario.name || "undefined user"}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      gutterBottom
+                      style={{ padding: "0.5rem 0 0.5rem 1.5rem" }}
+                    >
+                      {userData?.usuario.description ||
+                        "Sin descripcion..."}
+                    </Typography>
+                  </Grid>
+                  {/* Contador de seguidores productos y trueques */}
+                  <Grid item container direction="row">
+                    <Typography
+                      variant="body2"
+                      className={
+                        isMatch ? classes.mobileCounters : classes.deskCounters
+                      }
+                    >
+                      <Chip label="Seguidores : 10" variant="outlined" />
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      className={
+                        isMatch ? classes.mobileCounters : classes.deskCounters
+                      }
+                    >
+                      <Chip label="Productos : 5" variant="outlined" />
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      className={
+                        isMatch ? classes.mobileCounters : classes.deskCounters
+                      }
+                    >
+                      <Chip label="Trueques : 14" variant="outlined" />
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+              {/* editar perfil */}
+              <Grid item>
+                <Button
+                  variant="contained"
+                  style={colorButton}
+                  endIcon={<SettingsIcon />}
+                  onClick={handleOpenProfilModal}
+                >
+                  <Typography
+                    sx={{ cursor: "pointer" }}
+                    variant="button"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    EDITAR PERFIL
+                  </Typography>
+                </Button>
+              </Grid>
             </Grid>
-          ))}
-        </Grid>
-      </Paper>
-    </Container>
+            <ModalEditUserProfile
+              userData={userData}
+              openEditProfileModal={openEditProfileModal}
+              handleCloseModalProfile={handleCloseModalProfile}
+            />
+            <Divider />
+
+            <Grid
+              className={
+                isMatch
+                  ? classes.CardProductsContainer
+                  : classes.deskCardProductsContainer
+              }
+              container
+              justifyContent="space-evenly"
+            >
+              <Grid item>
+                <CardAddNewProduct />
+              </Grid>
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
+                <Grid item>
+                  <CardProduct
+                    productTittle={"manzanas"}
+                    productDescription={"manzanas rojas ricas pa"}
+                    productImages={""}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Paper>
+        </Container>
+      ) : null}
+    </>
   );
 };
 
