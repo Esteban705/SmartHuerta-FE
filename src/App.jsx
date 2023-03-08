@@ -11,62 +11,60 @@ import UserPerfil from "./components/user/UserPerfil";
 import Navbar from "./components/Navigation/Navbar"
 import PageNotFound from "./utils/PageNotFound";
 import AboutUs from "./components/About/AboutUs";
-import Products from "./components/Products/Products";
+import MisTruequesComponent from './components/MisTrueques/MisTruequesComponent';
 
 
 function App() {
     const [logged, setLogged] = useState(true);
 
-    return (
-        <HttpMethods>
-            <UserMethods>
-                <Navbar/> {/* Verificamos si usuario está logeado */}
-                {
-                !logged ? <>
+    return (<HttpMethods>
+        <UserMethods>
+            <Navbar/> {/* Verificamos si usuario está logeado */}
+            {
+            !logged ? <>
+                <Routes>
+                    <Route path="/login"
+                        index={true}
+                        element={<LoginUi/>}/>
+                    <Route path="*"
+                        element={
+                            <Navigate
+                        to="login"
+                        replace/>
+                        }/>
+                </Routes>
+            </> : <>
+                <div style={
+                    {marginTop: "4rem"}
+                }> {/* Ruta principal "/" = MapPage */}
                     <Routes>
-                        <Route path="/login"
+                        <Route path="/"
                             index={true}
-                            element={<LoginUi/>}/>
-                        <Route path="*"
                             element={
-                                <Navigate
-                            to="login"
-                            replace/>
+                                <HouseMethods><MapPage/></HouseMethods>
+                            }/> {/* Ruta no encontrada, manda a ruta principal*/}
+                        <Route path="*"
+                            element={<PageNotFound/>}/> {/* Rutas */}
+                        <Route path="/Mapa"
+                            element={
+                                <HouseMethods><MapPage/></HouseMethods>
                             }/>
+                        <Route path="/perfil"
+                            element={<UserPerfil/>}/>
+
+                        <Route path="aboutus"
+                            element={<AboutUs/>}></Route>
+
+                        <Route path="mistrueques"
+                            element={<MisTruequesComponent/>}></Route>
+
+
                     </Routes>
-                </> : <>
-                    <div style={
-                        {marginTop: "4rem"}
-                    }>
-                        {/* Ruta principal "/" = MapPage */}
-                        <Routes>
-                            <Route path="/"
-                                index={true}
-                                element={
-                                    <HouseMethods><MapPage/></HouseMethods>
-                                }/> {/* Ruta no encontrada, manda a ruta principal*/}
-                            <Route path="*"
-                                element={<PageNotFound/>}/> {/* Rutas */}
-                            <Route path="/Mapa"
-                                element={
-                                    <HouseMethods><MapPage/></HouseMethods>
-                                }/>
-                            <Route path="/perfil"
-                                element={<UserPerfil/>}/>
 
-                            <Route path="aboutus"
-                                element={<AboutUs/>}></Route>
-
-                            <Route path="products"
-                                element={<Products/>}></Route>
-
-                        </Routes>
-
-                    </div>
-                </>
-            } </UserMethods>
-        </HttpMethods>
-    );
+                </div>
+            </>
+        } </UserMethods>
+    </HttpMethods>);
 }
 
 export default App;

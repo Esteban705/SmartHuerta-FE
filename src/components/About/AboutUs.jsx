@@ -41,17 +41,6 @@ const AboutUs = () => {
                         {color: "#1F7345"}
                     }>
                         Lorem ipsum dolor sit amet consectetur,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        adipisicing elit.Maxime et,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        id atque odio,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        itaque error nesciunt reprehenderit porro iure necessitatibus expedita exercitationem ea eligendi reiciendis eaque asperiores !Repellat,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        similique blanditiis !</p>
-
-                    <br/>
-
-                    <p style={
-                        {color: "#1F7345"}
-                    }>
-                        Lorem ipsum dolor sit amet consectetur,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 adipisicing elit.Maxime et,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 id atque odio,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 itaque error nesciunt reprehenderit porro iure necessitatibus expedita exercitationem ea eligendi reiciendis eaque asperiores !Repellat,
@@ -67,6 +56,17 @@ const AboutUs = () => {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         id atque odio,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         itaque error nesciunt reprehenderit porro iure necessitatibus expedita exercitationem ea eligendi reiciendis eaque asperiores !Repellat,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         similique blanditiis !</p>
+
+                    <br/>
+
+                    <p style={
+                        {color: "#1F7345"}
+                    }>
+                        Lorem ipsum dolor sit amet consectetur,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                adipisicing elit.Maxime et,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                id atque odio,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                itaque error nesciunt reprehenderit porro iure necessitatibus expedita exercitationem ea eligendi reiciendis eaque asperiores !Repellat,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                similique blanditiis !</p>
 
                     <br/>
                     <p style={
@@ -85,8 +85,6 @@ const AboutUs = () => {
                     gridTemplateRows: "1fr 1fr 1fr ",
                     gridTemplateColumns: "1fr 1fr 1fr",
                     gap: "50px",
-
-
                     height: "1000px"
                 }
             }>

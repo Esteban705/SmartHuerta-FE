@@ -1,7 +1,11 @@
 import React from 'react'
 import {dataProducts} from './util/dataProductsCards';
-import productsImagenes from './productsImagenes.js';
-const ProductsCards = () => {
+import misTruequesImagenes from './misTruequesImagenes.js';
+
+
+const SolicitudesTrueques = () => {
+
+
     return (
         <> {
             dataProducts.map(dataProducts => (
@@ -28,13 +32,12 @@ const ProductsCards = () => {
 
                         <img alt=""
                             src={
-                                productsImagenes.products
+                                misTruequesImagenes.zanahorias
                             }
                             style={
                                 {
                                     width: "300px",
                                     height: "300px"
-
                                 }
                             }/>
 
@@ -53,8 +56,6 @@ const ProductsCards = () => {
 
                             dataProducts.productName
                         } </p>
-
-
                     </div>
                     <div>
                         <p style={
@@ -65,45 +66,60 @@ const ProductsCards = () => {
                             }
                         }>
                             {
-
-                            dataProducts.infoProduct
+                            dataProducts.usuarioProduct
                         } </p>
                     </div>
 
                     {/* div contenedor de boton */}
                     <div style={
-                        {alignItems: "center"}
+                        {
+                            alignItems: "center",
+                            display: "grid"
+                        }
                     }>
                         <a href="#">
                             <button style={
                                 {
                                     backgroundColor: "#63FF80",
                                     fontWeight: "bold",
-                                    height: "40px",
+                                    height: "35px",
                                     width: "200px",
                                     border: "none",
                                     color: "black",
                                     marginLeft: "50px",
-                                    marginBottom: "40px",
                                     textAlign: "center",
-                                    display: "inlineBlock",
                                     fontSize: "15px",
                                     borderRadius: "12px"
-
-
                                 }
                             }>
-                                Ver producto
+                                Aceptar Solicitud
                             </button>
                         </a>
-
-
+                        <a href="#">
+                            <button style={
+                                {
+                                    backgroundColor: "#63FF80",
+                                    fontWeight: "bold",
+                                    height: "35px",
+                                    width: "200px",
+                                    border: "none",
+                                    color: "black",
+                                    marginTop: "5px",
+                                    marginLeft: "50px",
+                                    marginBottom: "40px",
+                                    textAlign: "center",
+                                    fontSize: "15px",
+                                    borderRadius: "12px"
+                                }
+                            }>
+                                Cancelar Solicitud
+                            </button>
+                        </a>
                     </div>
                 </div>
             ))
         } </>
-
     )
 }
 
-export default ProductsCards
+export default SolicitudesTrueques
