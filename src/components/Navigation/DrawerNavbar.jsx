@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-
+import React,{ useState } from "react";
 import { buttonNavStyles } from "../Navigation/styles/NavbarStyles";
 import MenuIcon from "@material-ui/icons/Menu";
 import {
@@ -13,13 +11,18 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  MenuItem,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import PersonIcon from "@material-ui/icons/Person";
+import Settings from "@material-ui/icons/Settings";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AutorenewIcon from '@material-ui/icons/Autorenew';
+/* import { Link } from "react-router-dom"; */
 // import AvatarUser from "../user/avatar/AvatarUser";
 
 // const actions = ["Loguin", "Logout"];
 
-const DrawerNavbar = ({ pages, settings }) => {
+const DrawerNavbar = ({ pages, userData }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleOpenDrawer = () => {
@@ -32,42 +35,60 @@ const DrawerNavbar = ({ pages, settings }) => {
 
   return (
     <>
-      <Drawer open={openDrawer} onClose={handleCloseDrawer} >
-        <List style={{ width: "12rem", paddingInline: "1rem" }}>
+      <Drawer open={openDrawer} onClose={handleCloseDrawer}>
+        <List style={{ width: "15rem", paddingInline: "1rem" }}>
           {pages.map((page, index) => (
-            <Link
+/*             <Link
+              key={index}
               to={`/${page}`.trim()}
               style={{ textDecoration: "none", color: "black" }}
-            >
-              <ListItem
-                key={index}
-                onClick={handleCloseDrawer}
-              >
+            > */
+              <ListItem onClick={handleCloseDrawer}>
                 <ListItemIcon>
-                  <ListItemText style={{backgroundColor: 'red'}}>{page}</ListItemText>
+                  <ListItemText>{page}</ListItemText>
                 </ListItemIcon>
               </ListItem>
-            </Link>
+         /*    </Link> */
           ))}
           <Divider />
-          <ListItem style={{ padding: "0" }}>
-            <ListItemIcon>
-              {/* <AvatarUser settings={settings} /> */}
-              Avatar
-            </ListItemIcon>
-          </ListItem>
-          {/* {actions.map((action, index) => (
-            <Link
-              to={`/${action}`.trim()}
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <ListItem key={index}>
+          {userData ? (
+            <div>
+              <MenuItem
+              // onClick={() => {
+              //   console.log("abrir perfil");
+              // }}
+              >
+                <PersonIcon />
+                <Typography
+                  variant="body1"
+                  style={{ fontWeight: "bold", marginLeft: "1rem" }}
+                >
+                  {/*  Perfil: */} {userData.name.toUpperCase()}
+                </Typography>
+              </MenuItem>
+              <MenuItem>
                 <ListItemIcon>
-                  <ListItemText>{action}</ListItemText>
+                  <AutorenewIcon fontSize="small" style={{ marginRight: "1rem" }} />
+                  Trueques
                 </ListItemIcon>
-              </ListItem>
-            </Link>
-          ))} */}
+              </MenuItem>
+              <MenuItem>
+                <ListItemIcon>
+                  <Settings fontSize="small" style={{ marginRight: "1rem" }} />
+                  Configuraciones
+                </ListItemIcon>
+              </MenuItem>
+              <MenuItem>
+                <ListItemIcon>
+                  <ExitToAppIcon
+                    fontSize="small"
+                    style={{ marginRight: "1rem" }}
+                  />
+                  Logout
+                </ListItemIcon>
+              </MenuItem>
+            </div>
+          ) : null}
         </List>
       </Drawer>
 
@@ -80,7 +101,7 @@ const DrawerNavbar = ({ pages, settings }) => {
         >
           <MenuIcon style={{ color: "black" }} />
           <Typography
-            variant="h7"
+            variant="h6"
             style={{ paddingLeft: "1rem", alignItems: "center" }}
           >
             LOGO SMARTHUERTA

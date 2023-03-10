@@ -18,19 +18,17 @@ import AvatarOptions from "./AvatarOptions";
 import { useContext } from "react";
 import { UserContext } from "../Context/useContext";
 
-
-const ListItemsNavbar = ({ pages, settings }) => {
-  const { dataUser } = useContext(UserContext);
-  const userData = dataUser();
+const ListItemsNavbar = ({ pages, userData }) => {
+  // const { dataUser } = useContext(UserContext);
+  // const userData = dataUser();
   const classes = listItemsStyles();
-
 
   return (
     <>
       <div style={{ display: "flex" }}>
         <Button sx={buttonNavStyles}>
           <Typography
-            variant="h7"
+            variant="h6"
             style={{
               paddingLeft: "1rem",
               alignItems: "center",
@@ -57,10 +55,9 @@ const ListItemsNavbar = ({ pages, settings }) => {
 
       <div style={{ display: "flex", alignItems: "center" }}>
         <Box style={{ display: "flex" }}>
-          {pages.map((page) => (
-            <Link to={`/${page}`.trim()}>
+          {pages.map((page, index) => (
+            <Link to={`/${page}`.trim()} key={index}>
               <Button
-                key={page}
                 value={page}
                 // onClick={handleclickNavButton}
                 sx={buttonNavStyles}
@@ -81,15 +78,18 @@ const ListItemsNavbar = ({ pages, settings }) => {
             </Typography>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
-                <MailIcon />
+                <MailIcon color="action" />
               </Badge>
+              {/* <Badge badgeContent={4} color="secondary">
+                <MailIcon />
+              </Badge> */}
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+                <NotificationsIcon color="action"/>
               </Badge>
             </IconButton>
-            <AvatarOptions userData={userData}/>
+            <AvatarOptions userData={userData} />
           </div>
         ) : null}
       </div>

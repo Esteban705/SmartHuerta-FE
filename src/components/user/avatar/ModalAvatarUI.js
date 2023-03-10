@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import {
-  DialogActions,
   DialogTitle,
   IconButton,
   makeStyles,
@@ -19,7 +18,7 @@ const ModalAvatarUI = (props) => {
 
   const [file, setFile] = useState("");
 
-  console.log(file)
+
 
   const onImageChange = async (encodedPicture) => {
     const newEncodedPicture = await resizeEncodedPicture(
@@ -28,7 +27,6 @@ const ModalAvatarUI = (props) => {
       150
     );
 
-    console.log(newEncodedPicture)
     setImg(newEncodedPicture);
   };
 
