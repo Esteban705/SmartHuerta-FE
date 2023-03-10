@@ -3,25 +3,26 @@ import Footer from '../Footer/Footer';
 import MisTrueques from './MisTruequesCards';
 import SolicitudesTrueques from './SolicitudesTruequesCards';
 import TabsTrueques from './TabsTrueques';
+import {generalStyles} from './styles/general.styles'
 
 
 const MisTruequesComponent = () => {
+
+    const classes = generalStyles();
+
     return (<> {/* Div contenedor de titulo de Productos */}
         <div>
-            <h1 style={
-                {
-                    color: "black",
-                    fontSize: "30px",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    paddingTop: "2rem"
-                }
+            <h1 className={
+                classes.tittleMisTrueques
             }>
+
+
                 Mis Trueques
             </h1>
-            <div style={
-                {paddingTop: "1rem"}
+            <div className={
+                classes.tabEspacio
             }>
+
                 <TabsTrueques/></div>
 
             {/* <div className='menu-categorias'
@@ -50,32 +51,15 @@ const MisTruequesComponent = () => {
 
         {/* Div contenedor del boton "ver mas" */}
 
-        <div style={
-            {
-
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                paddingTop: "4rem"
-            }
-
+        <div className={
+            classes.contenedorBtnVerMas
         }>
 
             <a href="#">
-                <button style={
-                    {
-                        backgroundColor: "#777777",
-                        height: "40px",
-                        width: "200px",
-                        border: "none",
-                        color: "black",
-                        marginBottom: "2rem",
-                        textAlign: "center",
-                        display: "inlineBlock",
-                        fontSize: "20px",
-                        borderRadius: "12px"
-                    }
+                <button className={
+                    classes.btnVerMas
                 }>
+
                     <p>
                         Ver más
                     </p>
