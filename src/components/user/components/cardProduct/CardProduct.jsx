@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const CardProduct = () => {
+const CardProduct = ({ value, openModalCreateProduct, setOpenModalCreateProduct }) => {
   const useStyles = {
     root: {
       maxWidth: "16rem",
@@ -28,11 +28,13 @@ const CardProduct = () => {
     content: {
       padding: "0 1rem",
     },
-    actionsButtons:{
+    actionsButtons: {
       position: "relative",
-      top: "2rem"
-    }
+      top: "2rem",
+    },
   };
+
+  const { productName, coments } = value;
 
   return (
     <button>
@@ -44,17 +46,16 @@ const CardProduct = () => {
           alt="Manzana"
         />
         <CardContent style={useStyles.content}>
-          <Typography variant="h6" component="div" align="left">
-            Se cambian Manzanas
+          <Typography variant="h6" component="div" align="center">
+            {productName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {coments}
           </Typography>
         </CardContent>
 
-        <CardActions style={useStyles.actionsButtons} >
-          <Button size="small">Ver mas</Button>
+        <CardActions style={useStyles.actionsButtons}>
+          <Button size="small" onChange={setOpenModalCreateProduct(true)} >Ver mas</Button>
         </CardActions>
       </Card>
     </button>

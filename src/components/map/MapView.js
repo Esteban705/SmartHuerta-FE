@@ -64,7 +64,7 @@ const MapView = ({
   
 
   const registerNewHome = async (e) => {
-    debugger
+  
     const { lat, lng } = e.latlng;
     const newVenue = {
       name: dataOfUser.name,

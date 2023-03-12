@@ -18,17 +18,30 @@ import CardAddNewProduct from "./components/cardProduct/CardAddNewProduct";
 import globalStyles from "../GlobalStyles/globalStyles";
 import EditProfileUserPage from "./components/editProfile/EditProfileUserPage";
 import CardProduct from "./components/cardProduct/CardProduct";
+import { HttpContext } from "../Context/httpContext";
 
 const UserPerfil = () => {
   const { getUserData, dataUser } = useContext(UserContext);
-
+  const { get } = useContext(HttpContext);
   const dataOfUser = dataUser();
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [allProduct, setAllProduct] = useState([])
+
+
+
+
+  const getAllProduct = async () => {
+    const allProducts = await get(`/api/product/allproducts/${dataOfUser.id}`);
+    if(!allProducts.ok) return console.log('error')
+    setAllProduct(allProducts.getAllProduct)
+  };
 
   const handleClosetModalArticle = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
+  const [openModalCreateProduct, setOpenModalCreateProduct] = useState(false)
+  
   const [userData, setUserData] = useState();
 
   const handleOpenProfilModal = () => {
@@ -44,12 +57,10 @@ const UserPerfil = () => {
     return data;
   };
 
-
   useEffect(() => {
     getUsarData();
+    getAllProduct();
   }, []);
-
-  console.log("userData", userData);
 
   getUserData(dataOfUser.id);
   return (
@@ -140,11 +151,11 @@ const UserPerfil = () => {
           justifyContent="space-evenly"
         >
           <Grid item>
-            <CardAddNewProduct />
+            <CardAddNewProduct openModalCreateProduct={openModalCreateProduct} setOpenModalCreateProduct={setOpenModalCreateProduct} />
           </Grid>
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
+          {[allProduct].map((value) => (
             <Grid item>
-              <CardProduct />
+              <CardProduct value={value} openModalCreateProduct={openModalCreateProduct} setOpenModalCreateProduct={setOpenModalCreateProduct}/>
             </Grid>
           ))}
         </Grid>

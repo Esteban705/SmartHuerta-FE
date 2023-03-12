@@ -70,39 +70,30 @@ export const ArticuloView = ({
 }) => {
   const [dataImg, setDataImg] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
-  const [userData, setUserData] = useState()
+  const [userData, setUserData] = useState();
   const [allHomes, setAllHomes] = useState([]);
-  const [prodructData, setProdructData] = useState([])
+  const [prodructData, setProdructData] = useState([]);
   const { dataUser } = useContext(UserContext);
 
   const getDataToForm = async () => {
     const getDataUser = await dataUser();
     const getCategories = await getAllCategories();
     const gethomesToUser = await getUserHome(getDataUser.id);
-    const getDataProduct = await  getProduct('63fcc7d9fca6f844dc857534');
-
+    const getDataProduct = await getProduct("63fcc7d9fca6f844dc857534");
 
     setAllCategories(getCategories.getAllCategories);
     setAllHomes(gethomesToUser);
-    setUserData(getDataUser)
-    setProdructData(getDataProduct)
-    setDataImg(getDataProduct.getProduct.idImagen)
+    setUserData(getDataUser);
+    setProdructData(getDataProduct);
+    setDataImg(getDataProduct.getProduct.idImagen);
   };
 
   useEffect(() => {
     getDataToForm();
-    
   }, []);
 
   return (
     <div>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={handleClosetModalArticle}
-      >
-        Open dialog
-      </Button>
       <Dialog
         fullScreen
         style={{ width: "90%", height: "90%", margin: "auto" }}

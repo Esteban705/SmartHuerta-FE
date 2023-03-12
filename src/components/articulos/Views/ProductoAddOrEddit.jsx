@@ -46,17 +46,19 @@ export const ProductoAddOrEddit = ({
     setDataImg(imageAllFilter);
   };
 
-  const { getProduct } = prodructData;
-  console.log({dataImg})
+const getProduct = []
+
+
+  console.log(prodructData)
 
   return (
     <Formik
       initialValues={{
-        productName: getProduct.productName ??  "",
-        coments: getProduct.productName ??  "",
-        categories: getProduct.categories ??  [],
-        home: getProduct.idHome ?? allHomes,
-        cantidad:  getProduct.cantidad ??  "",
+        productName:"",
+        coments: "",
+        categories:  [],
+        home: allHomes,
+        cantidad: "",
         userId: userData.id,
       }}
       onSubmit={(values) => {
