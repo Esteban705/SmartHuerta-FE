@@ -12,33 +12,11 @@ const MisTruequesComponent = () => {
     <>
       {" "}
       {/* Div contenedor de titulo de Productos */}
-      <div>
+      <div className={classes.tabEspacio}>
         <h1 className={classes.tittleMisTrueques}>Mis Trueques</h1>
-        <div className={classes.tabEspacio}>
+        <div>
           <TabsTrueques />
         </div>
-        {/* <div className='menu-categorias'
-                    style={
-                        {
-                            fontSize: "16px",
-                            display: "flex",
-                            paddingLeft: "4rem",
-                            paddingTop: "2rem"
-
-                        }
-                }>
-                    <label>Filtrar</label>
-                    <select className="categorias" id="categorias">
-                        <option value="" selected disabled>Categorias</option>
-                        <option value="frutas">Frutas</option>
-                        <option value="verduras">Verduras</option>
-                        <option value="hortalizas">Hortalizas</option>
-                    </select>
-
-                </div>
-
-
-            */}{" "}
       </div>
       {/* Div contenedor del boton "ver mas" */}
       <div className={classes.contenedorBtnVerMas}>

@@ -10,7 +10,9 @@ import SolicitudesTrueques from "./SolicitudesTruequesCards";
 import TruequesRealizadosCards from "./TruequesRealizadosCards";
 import { tabsTruequesStyle } from "./styles/tabs.trueques.style";
 import CardProduct from "./../Products/cardProduct/CardProduct";
-
+import CardProductPendientes from "./../Products/cardProduct/CardProductPendientes";
+import CardProductSolicitudes from "./../Products/cardProduct/CardProductSolicitudes";
+import CardProductRealizados from "./../Products/cardProduct/CardProductRealizados";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -87,18 +89,17 @@ export default function ScrollableTabsButtonAuto() {
       </AppBar>
       <TabPanel value={value} index={0}>
         <div className={classes.cards}>
-          <CardProduct />
-          {/* <TruequesRealizadosCards /> */}
+          <CardProductRealizados />
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div className={classes.cards}>
-          <MisTrueques />
+          <CardProductPendientes />
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div className={classes.cards}>
-          <SolicitudesTrueques />
+          <CardProductSolicitudes />
         </div>
       </TabPanel>
     </div>
