@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../Footer/Footer";
 import UserCards from "./UserCards";
+import UsersCards from "./UsersCards";
 import { aboutUsStyles } from "./styles/aboutUs.style";
 import { cardProductStyles } from "../Products/Styles/CardProductsStyles";
 
@@ -54,8 +55,17 @@ const AboutUs = () => {
         </div>
       </div>
       {/* Div contenedor de la card */}
+      <div>
+        <h2 className={classes.tituloPrincipal}>Usuarios Top</h2>
+        <div className={classes.divParrafosUsuariosTop}>
+          {" "}
+          <p className={classes.parrafosUsuariosTop}>
+            Aquí estan destacados los usuarios con más intercambios éxitosos.
+          </p>
+        </div>
+      </div>
       <div className={classes.divContenedorCard}>
-        <UserCards />
+        <UsersCards />
       </div>
       {/* Div contenedor del boton "ver mas" */}
       <div className={classes.containerVerMas}>

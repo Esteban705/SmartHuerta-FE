@@ -52,7 +52,7 @@ function App() {
                     </HouseMethods>
                   }
                 />
-                <Route path="/perfil" element={<UserPerfil />} />
+                <Route path="perfil" element={<UserPerfil />} />
                 <Route path="about" element={<AboutUs />}></Route>
                 <Route
                   path="mistrueques"

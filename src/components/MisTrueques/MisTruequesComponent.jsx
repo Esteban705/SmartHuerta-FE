@@ -21,6 +21,7 @@ const MisTruequesComponent = () => {
       {/* Div contenedor del boton "ver mas" */}
       <div className={classes.contenedorBtnVerMas}>
         <a href="#">
+          {" "}
           <button className={classes.btnVerMas}>
             <p>Ver más</p>
           </button>

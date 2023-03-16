@@ -27,5 +27,5 @@ export const generalStyles = makeStyles((theme) => ({
     paddingTop: "4rem",
     backgroundColor: "#A5FCBC",
   },
-  tabEspacio: {},
+  tabEspacio: { height: "950px" },
 }));
