@@ -1,31 +1,23 @@
-import React from 'react';
-import Footer from '../Footer/Footer';
-import MisTrueques from './MisTruequesCards';
-import SolicitudesTrueques from './SolicitudesTruequesCards';
-import TabsTrueques from './TabsTrueques';
-import {generalStyles} from './styles/general.styles'
-
+import React from "react";
+import Footer from "../Footer/Footer";
+import MisTrueques from "./MisTruequesCards";
+import SolicitudesTrueques from "./SolicitudesTruequesCards";
+import TabsTrueques from "./TabsTrueques";
+import { generalStyles } from "./styles/general.styles";
 
 const MisTruequesComponent = () => {
+  const classes = generalStyles();
 
-    const classes = generalStyles();
-
-    return (<> {/* Div contenedor de titulo de Productos */}
-        <div>
-            <h1 className={
-                classes.tittleMisTrueques
-            }>
-
-
-                Mis Trueques
-            </h1>
-            <div className={
-                classes.tabEspacio
-            }>
-
-                <TabsTrueques/></div>
-
-            {/* <div className='menu-categorias'
+  return (
+    <>
+      {" "}
+      {/* Div contenedor de titulo de Productos */}
+      <div>
+        <h1 className={classes.tittleMisTrueques}>Mis Trueques</h1>
+        <div className={classes.tabEspacio}>
+          <TabsTrueques />
+        </div>
+        {/* <div className='menu-categorias'
                     style={
                         {
                             fontSize: "16px",
@@ -46,31 +38,19 @@ const MisTruequesComponent = () => {
                 </div>
 
 
-            */} </div>
+            */}{" "}
+      </div>
+      {/* Div contenedor del boton "ver mas" */}
+      <div className={classes.contenedorBtnVerMas}>
+        <a href="#">
+          <button className={classes.btnVerMas}>
+            <p>Ver más</p>
+          </button>
+        </a>
+      </div>
+      <Footer />
+    </>
+  );
+};
 
-
-        {/* Div contenedor del boton "ver mas" */}
-
-        <div className={
-            classes.contenedorBtnVerMas
-        }>
-
-            <a href="#">
-                <button className={
-                    classes.btnVerMas
-                }>
-
-                    <p>
-                        Ver más
-                    </p>
-                </button>
-            </a>
-        </div>
-
-        <Footer/>
-
-    </>)
-}
-
-
-export default MisTruequesComponent
+export default MisTruequesComponent;

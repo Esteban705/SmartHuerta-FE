@@ -1,104 +1,73 @@
 import React from "react";
 import Footer from "../Footer/Footer";
 import UserCards from "./UserCards";
-import {aboutUsStyles} from './styles/aboutUs.style'
-
+import { aboutUsStyles } from "./styles/aboutUs.style";
+import { cardProductStyles } from "../Products/Styles/CardProductsStyles";
 
 const AboutUs = () => {
-    const classes = aboutUsStyles();
+  const classes = aboutUsStyles();
 
-    return (<> {/* Div contenedor de informacion acerca de nosotros */}
-        <div className={
-            classes.contenedorInfoAU
-        }> {/* Div contenedor de titulo de acerca de nosotros */}
-
-            <div>
-                <h1 className={
-                    classes.tituloPrincipal
-                }>
-
-                    Usuarios de la Comunidad de SMART HUERTA
-                </h1>
-            </div>
-
-            {/* Div contenedor de los parrafos de acerca de nosotros */}
-            <div className={
-                classes.divParrafos
-            }>
-
-                <p className={
-                    classes.colorParrafo
-                }>
-                    Lorem ipsum dolor sit amet consectetur,
-                                          adipisicing elit.Maxime et, id atque odio, itaque error nesciunt
-                                        reprehenderit porro iure necessitatibus expedita exercitationem ea
-                                        eligendi reiciendis eaque asperiores !Repellat,similique blanditiis !</p>
-
-                <br/>
-                <p className={
-                    classes.colorParrafo
-                }>
-                    Lorem ipsum dolor sit amet consectetur,
-                                                            adipisicing elit.Maxime et,
-                                                            id atque odio,
-                                                            itaque error nesciunt
-                                                            reprehenderit porro iure necessitatibus expedita exercitationem ea
-                                                            eligendi reiciendis eaque asperiores !Repellat,
-                                                            similique blanditiis !</p>
-                <br/>
-
-                <p className={
-                    classes.colorParrafo
-                }>
-                    Lorem ipsum dolor sit amet consectetur,
-                                        adipisicing elit.Maxime et,
-                                        id atque odio,
-                                        itaque error nesciunt
-                                        reprehenderit porro iure necessitatibus expedita exercitationem ea
-                                        eligendi reiciendis eaque asperiores !Repellat,
-                                        similique blanditiis !</p>
-                <br/>
-
-                <p className={
-                    classes.colorParrafo
-                }>
-                    Lorem ipsum dolor sit amet consectetur,
-                                        adipisicing elit.Maxime et,
-                                        id atque odio,
-                                        itaque error nesciunt
-                                        reprehenderit porro iure necessitatibus expedita exercitationem ea
-                                        eligendi reiciendis eaque asperiores !Repellat,
-                                        similique blanditiis !</p>
-
-            </div>
+  return (
+    <>
+      {" "}
+      {/* Div contenedor de informacion acerca de nosotros */}
+      <div className={classes.contenedorInfoAU}>
+        {" "}
+        {/* Div contenedor de titulo de acerca de nosotros */}
+        <div>
+          <h1 className={classes.tituloPrincipal}>
+            Usuarios de la Comunidad de SMART HUERTA
+          </h1>
         </div>
-        {/* Div contenedor de la card */}
-        <div className={
-            classes.divContenedorCard
-        }>
+        {/* Div contenedor de los parrafos de acerca de nosotros */}
+        <div className={classes.divParrafos}>
+          <p className={classes.colorParrafo}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.Maxime et,
+            id atque odio, itaque error nesciunt reprehenderit porro iure
+            necessitatibus expedita exercitationem ea eligendi reiciendis eaque
+            asperiores !Repellat,similique blanditiis !
+          </p>
 
-            <UserCards/>
+          <br />
+          <p className={classes.colorParrafo}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.Maxime et,
+            id atque odio, itaque error nesciunt reprehenderit porro iure
+            necessitatibus expedita exercitationem ea eligendi reiciendis eaque
+            asperiores !Repellat, similique blanditiis !
+          </p>
+          <br />
+
+          <p className={classes.colorParrafo}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.Maxime et,
+            id atque odio, itaque error nesciunt reprehenderit porro iure
+            necessitatibus expedita exercitationem ea eligendi reiciendis eaque
+            asperiores !Repellat, similique blanditiis !
+          </p>
+          <br />
+
+          <p className={classes.colorParrafo}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.Maxime et,
+            id atque odio, itaque error nesciunt reprehenderit porro iure
+            necessitatibus expedita exercitationem ea eligendi reiciendis eaque
+            asperiores !Repellat, similique blanditiis !
+          </p>
         </div>
-        {/* Div contenedor del boton "ver mas" */}
-        <div className={
-            classes.containerVerMas
-        }>
-
-            <a href="#">
-                <button className={
-                    classes.btnVerMas
-                }>
-
-
-                    <p>Ver más</p>
-                </button>
-            </a>
-
-        </div>
-
-        <Footer/>
-
-    </>);
-};;
+      </div>
+      {/* Div contenedor de la card */}
+      <div className={classes.divContenedorCard}>
+        <UserCards />
+      </div>
+      {/* Div contenedor del boton "ver mas" */}
+      <div className={classes.containerVerMas}>
+        <a href="#">
+          <button className={classes.btnVerMas}>
+            <p>Ver más</p>
+          </button>
+        </a>
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default AboutUs;
