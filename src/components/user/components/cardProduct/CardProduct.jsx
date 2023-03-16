@@ -7,8 +7,25 @@ import {
   CardMedia,
   Typography,
 } from "@material-ui/core";
+import { ArticuloPage } from "../../../articulos/ArticuloPage";
 
-const CardProduct = ({ value, openModalCreateProduct, setOpenModalCreateProduct }) => {
+const CardProduct = ({
+  value,
+  openModalCreateProduct,
+  setOpenModalCreateProduct,
+}) => {
+
+
+  
+  const handleClickOpenModal = () => {
+    console.log('edit')
+    setOpenModalCreateProduct(true);
+  };
+
+  const handleClosetModalArticle = () => {
+    setOpenModalCreateProduct(false);
+  };
+
   const useStyles = {
     root: {
       maxWidth: "16rem",
@@ -37,28 +54,30 @@ const CardProduct = ({ value, openModalCreateProduct, setOpenModalCreateProduct 
   const { productName, coments } = value;
 
   return (
-    <button>
-      <Card sx={{ maxWidth: 345 }} style={useStyles.root}>
-        <CardMedia
-          style={useStyles.media}
-          component="img"
-          image="https://t1.uc.ltmcdn.com/es/posts/6/6/4/que_vitaminas_tiene_la_manzana_51466_orig.jpg"
-          alt="Manzana"
-        />
-        <CardContent style={useStyles.content}>
-          <Typography variant="h6" component="div" align="center">
-            {productName}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {coments}
-          </Typography>
-        </CardContent>
+    <>
+      <button>
+        <Card sx={{ maxWidth: 345 }} style={useStyles.root}>
+          <CardMedia
+            style={useStyles.media}
+            component="img"
+            image="https://t1.uc.ltmcdn.com/es/posts/6/6/4/que_vitaminas_tiene_la_manzana_51466_orig.jpg"
+            alt="Manzana"
+          />
+          <CardContent style={useStyles.content}>
+            <Typography variant="h6" component="div" align="center">
+              {productName}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {coments}
+            </Typography>
+          </CardContent>
 
-        <CardActions style={useStyles.actionsButtons}>
-          <Button size="small" onChange={setOpenModalCreateProduct(true)} >Ver mas</Button>
-        </CardActions>
-      </Card>
-    </button>
+          <CardActions style={useStyles.actionsButtons}>
+            <Button size="small" onChange={setValueEditt(value)}>Ver mas</Button>
+          </CardActions>
+        </Card>
+      </button>
+    </>
   );
 };
 

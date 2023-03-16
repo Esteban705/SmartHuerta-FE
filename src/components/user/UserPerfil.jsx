@@ -19,29 +19,36 @@ import globalStyles from "../GlobalStyles/globalStyles";
 import EditProfileUserPage from "./components/editProfile/EditProfileUserPage";
 import CardProduct from "./components/cardProduct/CardProduct";
 import { HttpContext } from "../Context/httpContext";
+import { ArticuloPage } from "../articulos/ArticuloPage";
 
 const UserPerfil = () => {
   const { getUserData, dataUser } = useContext(UserContext);
   const { get } = useContext(HttpContext);
   const dataOfUser = dataUser();
-  const [open, setOpen] = useState(false);
-  const [allProduct, setAllProduct] = useState([])
-
-
-
+  const [allProduct, setAllProduct] = useState([]);
 
   const getAllProduct = async () => {
     const allProducts = await get(`/api/product/allproducts/${dataOfUser.id}`);
-    if(!allProducts.ok) return console.log('error')
-    setAllProduct(allProducts.getAllProduct)
+    if (!allProducts.ok) return console.log("error");
+    setAllProduct(allProducts.getAllProduct);
   };
 
-  const handleClosetModalArticle = () => {
-    setOpen(false);
-  };
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
-  const [openModalCreateProduct, setOpenModalCreateProduct] = useState(false)
-  
+  const [openModalCreateProduct, setOpenModalCreateProduct] = useState(false);
+  const [valueEditt, setValueEditt] = useState()
+
+  console.log(openModalCreateProduct);
+
+
+ const handleClickOpenModal = () => {
+  setOpenModalCreateProduct(true)
+ }
+
+ const handleClosetModalArticle = () => {
+  setOpenModalCreateProduct(false)
+ }
+
+
   const [userData, setUserData] = useState();
 
   const handleOpenProfilModal = () => {
@@ -60,9 +67,10 @@ const UserPerfil = () => {
   useEffect(() => {
     getUsarData();
     getAllProduct();
+    getUserData(dataOfUser.id);
   }, []);
 
-  getUserData(dataOfUser.id);
+  
   return (
     <Container style={{ padding: "1rem" }}>
       <Paper variant={10} style={{ padding: "2rem" }}>
@@ -151,14 +159,30 @@ const UserPerfil = () => {
           justifyContent="space-evenly"
         >
           <Grid item>
-            <CardAddNewProduct openModalCreateProduct={openModalCreateProduct} setOpenModalCreateProduct={setOpenModalCreateProduct} />
+            <CardAddNewProduct
+              setOpenModalCreateProduct={setOpenModalCreateProduct}
+              openModalCreateProduct={openModalCreateProduct}
+            />
           </Grid>
-          {[allProduct].map((value) => (
+
+          {[allProduct ?? []].map((value) => (
             <Grid item>
-              <CardProduct value={value} openModalCreateProduct={openModalCreateProduct} setOpenModalCreateProduct={setOpenModalCreateProduct}/>
+              <CardProduct
+                key={value}
+                value={value}
+                setValueEditt={setValueEditt}
+                openModalCreateProduct={openModalCreateProduct}
+                handleClickOpenModal={handleClickOpenModal}
+                handleClosetModalArticle={handleClosetModalArticle}
+              />
             </Grid>
           ))}
         </Grid>
+        <ArticuloPage
+        open={openModalCreateProduct}
+        handleClosetModalArticle={handleClosetModalArticle}
+        value={valueEditt}
+      />
       </Paper>
     </Container>
   );

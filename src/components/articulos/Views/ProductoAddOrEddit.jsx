@@ -59,7 +59,7 @@ const getProduct = []
         categories:  [],
         home: allHomes,
         cantidad: "",
-        userId: userData.id,
+        userId: userData?.id,
       }}
       onSubmit={(values) => {
         hanldeSubmitForm(values, dataImg);

@@ -5,6 +5,7 @@ import { ArticuloView } from "./Views/ArticuloView";
 export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
   const { get, post } = useContext(HttpContext);
 
+
   const hanldeSubmitForm = async (values, dataImg) => {
     const categoriesId = values.categories.map((dataCategories) => {
       return dataCategories._id;
@@ -19,8 +20,6 @@ export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
       homesId,
       images: dataImg,
     };
-
-    console.log({prepareDataToProduct})
 
    /*  const saveNewproduct = await post(`/api/product/`, prepareDataToProduct);
 

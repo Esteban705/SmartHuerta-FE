@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { ArticuloPage } from "../../../articulos/ArticuloPage";
 import ModalCreateNewProduct from "./ModalCreateNewProduct";
 
-const CardAddNewProduct = ({openModalCreateProduct, setOpenModalCreateProduct}) => {
+const CardAddNewProduct = ({setOpenModalCreateProduct, openModalCreateProduct}) => {
+
+
   const useStyles = {
     root: {
       width: "16rem",
@@ -20,15 +22,16 @@ const CardAddNewProduct = ({openModalCreateProduct, setOpenModalCreateProduct}) 
     },
   };
 
-  // const classes = useStyles();
+  
   
 
-  const handleClickOpenModal = () => {
-    setOpenModalCreateProduct(true);
-  };
-
-  const handleCloseModal = () => {
+  const handleClosetModalArticle = () => {
+    console.log('create');
     setOpenModalCreateProduct(false);
+  };
+  const handleClickOpenModal = () => {
+    console.log('create');
+    setOpenModalCreateProduct(true);
   };
 
   return (
@@ -44,8 +47,9 @@ const CardAddNewProduct = ({openModalCreateProduct, setOpenModalCreateProduct}) 
         </Card>
       </button>
       <ArticuloPage
-       open={openModalCreateProduct}
-       handleClosetModalArticle={handleCloseModal}
+        open={openModalCreateProduct}
+        handleClosetModalArticle={handleClosetModalArticle}
+        value={null}
       />
     </>
   );
