@@ -19,12 +19,14 @@ import CardAddNewProduct from "../Products/cardProduct/CardAddNewProduct";
 import ModalEditUserProfile from "./components/editProfile/ModalEditUserProfileServices";
 import CardProduct from "../Products/cardProduct/CardProduct";
 import { userPerfilStyles } from "./styles/userPerfilStyles";
+import { HttpContext } from "../Context/httpContext";
 
 const UserPerfil = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = userPerfilStyles();
 
+  const { loading } = useContext(HttpContext);
   const { getUserData, dataUser } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const dataOfUser = dataUser();
@@ -53,10 +55,10 @@ const UserPerfil = () => {
     getUsarData();
   }, []);
 
-  console.log("UserPerfil :>> ", userData);
+ 
   return (
     <>
-      {userData ? (
+      {!loading && (
         <Container className={classes.deskstopRoots}>
           <Paper
             variant={10}
@@ -108,8 +110,7 @@ const UserPerfil = () => {
                       gutterBottom
                       style={{ padding: "0.5rem 0 0.5rem 1.5rem" }}
                     >
-                      {userData?.usuario.description ||
-                        "Sin descripcion..."}
+                      {userData?.usuario.description || "Sin descripcion..."}
                     </Typography>
                   </Grid>
                   {/* Contador de seguidores productos y trueques */}
@@ -176,11 +177,14 @@ const UserPerfil = () => {
               justifyContent="space-evenly"
             >
               <Grid item>
-                <CardAddNewProduct />
+                <div>
+                  <CardAddNewProduct />
+                </div>
               </Grid>
-              {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((key, value) => (
                 <Grid item>
                   <CardProduct
+                    key={key}
                     productTittle={"manzanas"}
                     productDescription={"manzanas rojas ricas pa"}
                     productImages={""}
@@ -190,7 +194,7 @@ const UserPerfil = () => {
             </Grid>
           </Paper>
         </Container>
-      ) : null}
+      )}
     </>
   );
 };

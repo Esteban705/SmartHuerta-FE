@@ -44,7 +44,9 @@ export const HttpMethods = ({ children }) => {
   
    const get = async (url) => {
     try {
+      setLoading(true)
       const {data} = await axios.get(`${process.env.REACT_APP_BASE_URL}${url}`);
+      setLoading(false)
       return data;
     } catch (error) {
       return error.response.data;
@@ -54,7 +56,7 @@ export const HttpMethods = ({ children }) => {
 
 
   return (
-    <HttpContext.Provider value={{ post, get, put, loading }}>
+    <HttpContext.Provider value={{ post, get, put, loading, setLoading }}>
       {children}
     </HttpContext.Provider>
 )}

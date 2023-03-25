@@ -24,19 +24,29 @@ const CardAddNewProduct = () => {
     setOpenModalCreateProduct(false);
   };
 
+  const handleClick = () => {
+    console.log("asdasdasd");
+  };
+
   return (
     <>
       {!isMatch ? (
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardContent className={classes.content}>
-              <Typography gutterBottom variant="h1">
-                +
-              </Typography>
-              <Typography variant="h6">AGREGAR UN PRODUCTO</Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        <button
+          onClick={(e) => {
+            console.log("adsasd");
+          }}
+        >
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardContent className={classes.content}>
+                <Typography gutterBottom variant="h1">
+                  +
+                </Typography>
+                <Typography variant="h6">AGREGAR UN PRODUCTO</Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </button>
       ) : (
         // mobile component
         <Card className={classes.rowRoot}>
