@@ -29,7 +29,7 @@ const LoginForm = (props) => {
     if (respLogin.ok) {
       toast.success("Usuario Logeado con exito ");
       setTimeout(() => {
-        navigate('/map')
+        navigate('/Mapa')
       }, 1000);
     } else {
       console.log(respLogin);
