@@ -14,7 +14,7 @@ import {
 import productoSinImagen from "../../../assets/producto-sin-imagen.png";
 import { cardProductStyles } from "../Styles/CardProductsStyles";
 
-const CardProduct = ({ productTittle, productDescription, productImages }) => {
+const CardProduct = ({ productTittle, productDescription, productImages, productId, handleClickOpenModal  }) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = cardProductStyles();
@@ -40,7 +40,9 @@ const CardProduct = ({ productTittle, productDescription, productImages }) => {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" onClick={(e) => {
+            handleClickOpenModal(productId)
+          }}>
               Ver Mas
             </Button>
           </CardActions>

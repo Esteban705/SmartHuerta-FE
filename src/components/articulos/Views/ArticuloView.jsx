@@ -15,6 +15,8 @@ import { AcordionOfProductsView } from "./AcordionOfProductsView";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../Context/useContext";
+import { HttpContext } from "../../Context/httpContext";
+import { LoadingSkeleton } from "./LoadingSkeleton";
 
 const styles = (theme) => ({
   root: {
@@ -67,6 +69,7 @@ export const ArticuloView = ({
   getAllCategories,
   getUserHome,
   getProduct,
+  productID,
 }) => {
   const [dataImg, setDataImg] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
@@ -74,23 +77,32 @@ export const ArticuloView = ({
   const [allHomes, setAllHomes] = useState([]);
   const [prodructData, setProdructData] = useState([]);
   const { dataUser } = useContext(UserContext);
+  const { loading } = useContext(HttpContext);
 
   const getDataToForm = async () => {
     const getDataUser = await dataUser();
     const getCategories = await getAllCategories();
     const gethomesToUser = await getUserHome(getDataUser.id);
-    const getDataProduct = await getProduct("63fcc7d9fca6f844dc857534");
 
     setAllCategories(getCategories.getAllCategories);
     setAllHomes(gethomesToUser);
     setUserData(getDataUser);
+  };
+
+  const getDataEditProduct = async () => {
+    const getDataProduct = await getProduct(productID);
     setProdructData(getDataProduct);
-    setDataImg(getDataProduct.getProduct.idImagen);
+    setDataImg(getDataProduct?.getProduct?.idImagen ?? []);
   };
 
   useEffect(() => {
     getDataToForm();
+    getDataEditProduct();
   }, []);
+
+  useEffect(() => {
+    getDataEditProduct();
+  }, [productID]);
 
   return (
     <div>
@@ -129,15 +141,19 @@ export const ArticuloView = ({
                 display: "grid",
               }}
             >
-              <ProductoAddOrEddit
-                hanldeSubmitForm={hanldeSubmitForm}
-                dataImg={dataImg}
-                setDataImg={setDataImg}
-                allCategories={allCategories}
-                allHomes={allHomes}
-                userData={userData}
-                prodructData={prodructData}
-              />
+              {!loading ? (
+                <ProductoAddOrEddit
+                  hanldeSubmitForm={hanldeSubmitForm}
+                  dataImg={dataImg}
+                  setDataImg={setDataImg}
+                  allCategories={allCategories}
+                  allHomes={allHomes}
+                  userData={userData}
+                  prodructData={prodructData}
+                />
+              ) : (
+                <LoadingSkeleton />
+              )}
             </Paper>
 
             <Paper

@@ -7,8 +7,8 @@ import { UserMethods } from "./components/Context/useContext";
 import { HouseMethods } from "./components/Context/houseContext";
 import Login from "./components/Login/LoginUi";
 import { MapPage } from "./components/map/MapPage";
-import UserPerfil from "./components/user/UserPerfil";
 import Navbar from "./components/Navigation/Navbar";
+import { UserPerfilPage } from "./components/user/UserPerfilPage";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
               </HouseMethods>
             }
           />
-          <Route path="/Perfil" element={<UserPerfil />} />
+          <Route path="/Perfil" element={<UserPerfilPage />} />
         </Routes>
       </UserMethods>
     </HttpMethods>
