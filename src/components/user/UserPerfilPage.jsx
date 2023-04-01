@@ -1,20 +1,26 @@
-import React, { useContext } from 'react'
-import { HttpContext } from '../Context/httpContext'
-import UserPerfil from './UserPerfil'
+import React, { useContext } from "react";
+import { HttpContext } from "../Context/httpContext";
+import UserPerfil from "./UserPerfil";
 
 export const UserPerfilPage = () => {
-const { get } = useContext(HttpContext)
+  const { get, put } = useContext(HttpContext);
 
+  const getAllProducts = async (productId) => {
+    const getAllProducts = await get(`/api/product/allproducts/${productId}`);
 
-    const getAllProducts = async (userId) => {
+    return getAllProducts;
+  };
 
-        const getAllProducts = await get(`/api/product/allproducts/${userId}`)
+  const handleDeleteProduct = async (productId) => {
+    const getAllProducts = await put(`/api/product/delete/${productId}`);
 
-        return getAllProducts
-    }
-
+    return getAllProducts;
+  };
 
   return (
-    <UserPerfil getAllProducts={getAllProducts}/>
-  )
-}
+    <UserPerfil
+      getAllProducts={getAllProducts}
+      handleDelete={handleDeleteProduct}
+    />
+  );
+};

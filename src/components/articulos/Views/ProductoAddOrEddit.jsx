@@ -29,7 +29,6 @@ export const ProductoAddOrEddit = ({
   allHomes,
   userData,
   prodructData,
-  updateProduct,
   productID,
 }) => {
   const uploadImage = async (image) => {
@@ -45,7 +44,6 @@ export const ProductoAddOrEddit = ({
 
     setDataImg(imageAllFilter);
   };
-  console.log({productID})
 
   return (
     <Formik

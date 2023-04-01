@@ -17,6 +17,7 @@ import { useContext } from "react";
 import { UserContext } from "../../Context/useContext";
 import { HttpContext } from "../../Context/httpContext";
 import { LoadingSkeleton } from "./LoadingSkeleton";
+import { toast, Toaster } from "react-hot-toast";
 
 const styles = (theme) => ({
   root: {
@@ -65,7 +66,7 @@ const DialogActions = withStyles((theme) => ({
 export const ArticuloView = ({
   handleClosetModalArticle,
   open,
-  hanldeSubmitForm,
+  hanldeSubmit,
   getAllCategories,
   getUserHome,
   getProduct,
@@ -95,6 +96,14 @@ export const ArticuloView = ({
     setDataImg(getDataProduct?.getProduct?.idImagen ?? []);
   };
 
+  const hanldeSubmitForm = async (values, dataImg) => {
+    const response = await hanldeSubmit(values, dataImg);
+
+    response.ok
+      ? toast.success("¡Producto agregado con exito!")
+      : toast.error("error en el sistema");
+  };
+
   useEffect(() => {
     getDataToForm();
     getDataEditProduct();
@@ -106,6 +115,7 @@ export const ArticuloView = ({
 
   return (
     <div>
+      <Toaster position="top-center" />
       <Dialog
         fullScreen
         style={{ width: "90%", height: "90%", margin: "auto" }}

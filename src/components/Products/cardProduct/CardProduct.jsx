@@ -13,8 +13,16 @@ import {
 } from "@material-ui/core";
 import productoSinImagen from "../../../assets/producto-sin-imagen.png";
 import { cardProductStyles } from "../Styles/CardProductsStyles";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-const CardProduct = ({ productTittle, productDescription, productImages, productId, handleClickOpenModal  }) => {
+const CardProduct = ({
+  productTittle,
+  productDescription,
+  productImages,
+  productId,
+  handleClickOpenModal,
+  handleDelete,
+}) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = cardProductStyles();
@@ -24,6 +32,21 @@ const CardProduct = ({ productTittle, productDescription, productImages, product
       {!isMatch ? (
         // deskstops component
         <Card className={classes.cardRoot}>
+          <button
+            onClick={() => {
+              handleDelete(productId);
+            }}
+          >
+            <DeleteIcon
+              style={{
+                position: "absolute",
+                top: "5px",
+                zIndex: 1,
+                right: 4,
+                color: "red",
+              }}
+            />
+          </button>
           <CardActionArea>
             <CardMedia
               className={classes.cardMedia}
@@ -40,9 +63,13 @@ const CardProduct = ({ productTittle, productDescription, productImages, product
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary" onClick={(e) => {
-            handleClickOpenModal(productId)
-          }}>
+            <Button
+              size="small"
+              color="primary"
+              onClick={(e) => {
+                handleClickOpenModal(productId);
+              }}
+            >
               Ver Mas
             </Button>
           </CardActions>

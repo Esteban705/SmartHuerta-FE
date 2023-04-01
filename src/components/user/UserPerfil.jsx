@@ -22,7 +22,7 @@ import { userPerfilStyles } from "./styles/userPerfilStyles";
 import { HttpContext } from "../Context/httpContext";
 import { ArticuloPage } from "../articulos/ArticuloPage";
 
-const UserPerfil = ({ getAllProducts }) => {
+const UserPerfil = ({ getAllProducts, handleDelete }) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = userPerfilStyles();
@@ -69,6 +69,7 @@ const UserPerfil = ({ getAllProducts }) => {
     getUsarData();
     getUserData(dataOfUser.id);
   }, []);
+
   return (
     <>
       <>
@@ -212,6 +213,7 @@ const UserPerfil = ({ getAllProducts }) => {
                     }
                     productId={value._id}
                     handleClickOpenModal={handleClickOpenModal}
+                    handleDelete={handleDelete}
                   />
                 </Grid>
               ))}
