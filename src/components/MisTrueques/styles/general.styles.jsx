@@ -7,6 +7,7 @@ export const generalStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     textAlign: "center",
     paddingTop: "2rem",
+    backgroundColor: "#EEFFF3",
   },
   btnVerMas: {
     backgroundColor: "#777777",
@@ -25,7 +26,7 @@ export const generalStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     paddingTop: "4rem",
-    backgroundColor: "#A5FCBC",
+    backgroundColor: "#EEFFF3",
   },
   tabEspacio: { height: "950px" },
 }));

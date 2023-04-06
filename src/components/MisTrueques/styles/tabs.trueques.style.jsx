@@ -4,7 +4,7 @@ export const tabsTruequesStyle = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: "#A5FCBC",
+    backgroundColor: "#EEFFF3",
   },
   marginTabs: {
     margin: "0 2rem",
@@ -18,4 +18,5 @@ export const tabsTruequesStyle = makeStyles((theme) => ({
     gap: "50px",
     height: "1000px",
   },
+  colorTabNew: { backgroundColor: "#EEFFF3" },
 }));

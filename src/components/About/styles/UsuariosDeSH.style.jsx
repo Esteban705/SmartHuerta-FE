@@ -2,48 +2,42 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 export const aboutUsStyles = makeStyles((theme) => ({
   contenedorInfoAU: {
-    marginTop: "5rem",
+    marginTop: "6rem",
     width: "100%",
     height: "500px",
     backgroundColor: "#CBFCD2 ",
   },
   tituloPrincipal: {
     color: "#1F7345",
-    fontSize: "2em",
+    fontSize: "1.8em",
     fontWeight: "500",
     textAlign: "center",
     paddingTop: "2rem",
   },
   divParrafos: {
     alignItems: "center",
+    paddingRight: "9em",
+    paddingLeft: "10em",
   },
   colorParrafo: {
     marginTop: "1em",
-    marginLeft: "9em",
-    marginRight: "9em",
     color: "#1F7345",
     fontSize: "1em",
     textAlign: "left",
     fontWeight: "350",
   },
-  smartFrase: {
-    color: "#1F7345",
-    fontWeight: "800",
-    fontSize: "1.6em",
-    textAlign: "center",
-  },
+
   textAdvertencia: {
     color: "#1F7345",
     fontWeight: "800",
     fontSize: "0.8em",
     textAlign: "center",
-    paddingTop: "1em",
+    paddingTop: "4em",
   },
 
   divContenedorCard: {
-    width: "100%",
     justifyContent: "center",
-    marginLeft: "5rem",
+    marginLeft: "8rem",
     marginTop: "5rem",
     display: "grid",
     gridTemplateRows: "1fr 1fr 1fr ",

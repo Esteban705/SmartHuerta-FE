@@ -10,10 +10,8 @@ const UsuariosDeSH = () => {
 
   return (
     <>
-      {" "}
       {/* Div contenedor de informacion acerca de nosotros */}
       <div className={classes.contenedorInfoAU}>
-        {" "}
         {/* Div contenedor de titulo de acerca de nosotros */}
         <div>
           <h1 className={classes.tituloPrincipal}>
@@ -37,8 +35,11 @@ const UsuariosDeSH = () => {
             El tope máximo de puntos por mes es de 1000. Esta cantidad otorga
             una estrella que se puede exhibir el perfil, y cuantas más
             estrellas, mayor la reputación del usuario, lo que significaría
-            mayores trueques exitosos realizados Toda esta información debe ser
-            tenida en cuenta al realizar peticiones de intercambios.
+            mayores trueques exitosos realizados.
+          </p>
+          <p className={classes.colorParrafo}>
+            Toda esta información debe ser tenida en cuenta al realizar
+            peticiones de intercambios.
           </p>
           <p className={classes.colorParrafo}>
             Al alcanzar 5 estrellas, entra el usuario en el ranking de los 10
@@ -53,10 +54,10 @@ const UsuariosDeSH = () => {
             Ante cualquier duda o inconveniente, dirigirse a la sección
             contactos, denuncias/reclamos.
           </p>
-          <p className={classes.textAdvertencia}>
+          {/* <p className={classes.textAdvertencia}>
             ©Smart-Huerta es una marca registrada de Advanced-Valley. <br />
             Advanced-Valley no se responsabiliza del mal uso de la aplicación.
-          </p>
+          </p> */}
         </div>
       </div>
       {/* Div contenedor de la card */}
