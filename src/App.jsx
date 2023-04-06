@@ -10,7 +10,7 @@ import { MapPage } from "./components/map/MapPage";
 import UserPerfil from "./components/user/UserPerfil";
 import Navbar from "./components/Navigation/Navbar";
 import PageNotFound from "./utils/PageNotFound";
-import AboutUs from "./components/About/AboutUs";
+import UsuariosDeSH from "./components/About/UsuariosDeSH";
 import MisTruequesComponent from "./components/MisTrueques/MisTruequesComponent";
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
                   }
                 />
                 <Route path="perfil" element={<UserPerfil />} />
-                <Route path="about" element={<AboutUs />}></Route>
+                <Route path="usuarios" element={<UsuariosDeSH />}></Route>
                 <Route
                   path="mistrueques"
                   element={<MisTruequesComponent />}
