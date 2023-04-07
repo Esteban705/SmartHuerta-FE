@@ -36,4 +36,8 @@ export const userPerfilStyles = makeStyles((theme) => ({
     backgroundColor: `${globalStyles.backgroundColorFooter}`,
     minHeight: "50vh",
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));

@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { buttonNavStyles } from "../Navigation/styles/NavbarStyles";
 import MenuIcon from "@material-ui/icons/Menu";
 import {
@@ -16,11 +16,7 @@ import {
 import PersonIcon from "@material-ui/icons/Person";
 import Settings from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import AutorenewIcon from '@material-ui/icons/Autorenew';
-/* import { Link } from "react-router-dom"; */
-// import AvatarUser from "../user/avatar/AvatarUser";
-
-// const actions = ["Loguin", "Logout"];
+import AutorenewIcon from "@material-ui/icons/Autorenew";
 
 const DrawerNavbar = ({ pages, userData }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -38,37 +34,37 @@ const DrawerNavbar = ({ pages, userData }) => {
       <Drawer open={openDrawer} onClose={handleCloseDrawer}>
         <List style={{ width: "15rem", paddingInline: "1rem" }}>
           {pages.map((page, index) => (
-/*             <Link
+            /*             <Link
               key={index}
               to={`/${page}`.trim()}
               style={{ textDecoration: "none", color: "black" }}
             > */
-              <ListItem onClick={handleCloseDrawer}>
-                <ListItemIcon>
-                  <ListItemText>{page}</ListItemText>
-                </ListItemIcon>
-              </ListItem>
-         /*    </Link> */
+            <ListItem onClick={handleCloseDrawer}>
+              <ListItemIcon>
+                <ListItemText>{page}</ListItemText>
+              </ListItemIcon>
+            </ListItem>
+            /*    </Link> */
           ))}
           <Divider />
           {userData ? (
             <div>
               <MenuItem
-              // onClick={() => {
-              //   console.log("abrir perfil");
-              // }}
               >
                 <PersonIcon />
                 <Typography
                   variant="body1"
                   style={{ fontWeight: "bold", marginLeft: "1rem" }}
                 >
-                  {/*  Perfil: */} {userData.name.toUpperCase()}
+                  {/*  Perfil: */} {userData?.name?.toUpperCase()}
                 </Typography>
               </MenuItem>
               <MenuItem>
                 <ListItemIcon>
-                  <AutorenewIcon fontSize="small" style={{ marginRight: "1rem" }} />
+                  <AutorenewIcon
+                    fontSize="small"
+                    style={{ marginRight: "1rem" }}
+                  />
                   Trueques
                 </ListItemIcon>
               </MenuItem>

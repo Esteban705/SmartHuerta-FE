@@ -17,7 +17,6 @@ const CardAddNewProduct = () => {
 
   const handleClickOpenModal = () => {
     setOpenModalCreateProduct(true);
-    console.log("object :>> ", "object");
   };
 
   const handleCloseModal = () => {

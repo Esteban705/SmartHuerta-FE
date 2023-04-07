@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Box,
   Divider,
   IconButton,
   ListItemIcon,
@@ -8,7 +7,7 @@ import {
   MenuItem,
   Typography,
 } from "@material-ui/core";
-import AutorenewIcon from '@material-ui/icons/Autorenew';
+import AutorenewIcon from "@material-ui/icons/Autorenew";
 import Settings from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PersonIcon from "@material-ui/icons/Person";
@@ -17,8 +16,7 @@ import { Link } from "react-router-dom";
 
 const AvatarOptions = ({ userData }) => {
   const [openOptions, setOpenOptions] = useState(null);
-
-  // console.log(userData, 'userData')
+  const { usuario } = userData;
 
   const handleClickOpenOptions = (event) => {
     setOpenOptions(event.currentTarget);
@@ -27,6 +25,7 @@ const AvatarOptions = ({ userData }) => {
   const handleCloseOptions = () => {
     setOpenOptions(null);
   };
+
   return (
     <>
       <IconButton
@@ -37,12 +36,13 @@ const AvatarOptions = ({ userData }) => {
         onClick={handleClickOpenOptions}
         color="inherit"
       >
-        <Avatar
-          style={{ backgroundColor: "green" }}
-          onClick={() => console.log("touched")}
-        >
-          {userData?.name?.slice(0, 2).toUpperCase() || ""}
-        </Avatar>
+        {usuario.imgId ? (
+          <Avatar src={usuario?.imgId.dataImg} />
+        ) : (
+          <Avatar style={{ backgroundColor: "green" }}>
+            {userData?.usuario.name.slice(0, 2).toUpperCase() || ""}
+          </Avatar>
+        )}
       </IconButton>
       <Menu
         id="simple-menu"
@@ -53,16 +53,13 @@ const AvatarOptions = ({ userData }) => {
       >
         <Link to={"/Perfil".trim()}>
           <MenuItem
-            // onClick={() => {
-            //   console.log("abrir perfil");
-            // }}
           >
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
             <Typography variant="body1" style={{ fontWeight: "bold" }}>
               {" "}
-              Mi Perfil: {userData.name.toUpperCase()}
+              Mi Perfil: {usuario?.name.toUpperCase()}
             </Typography>
           </MenuItem>
         </Link>
@@ -91,38 +88,3 @@ const AvatarOptions = ({ userData }) => {
 };
 
 export default AvatarOptions;
-
-{
-  /* <Box
-anchorEl={anchorEl}
-id="account-menu"
-open={ true}
-onClose={handleClose}
-onClick={handleClose}
-<MenuItem>
-  <Avatar /> Profile
-</MenuItem>
-<MenuItem>
-  <Avatar /> My account
-</MenuItem>
-<Divider />
-<MenuItem>
-  <ListItemIcon>
-    <PersonAdd fontSize="small" />
-  </ListItemIcon>
-  Add another account
-</MenuItem>
-<MenuItem>
-  <ListItemIcon>
-    <Settings fontSize="small" />
-  </ListItemIcon>
-  Settings
-</MenuItem>
-<MenuItem>
-  <ListItemIcon>
-    <ExitToAppIcon fontSize="small" />
-  </ListItemIcon>
-  Logout
-</MenuItem>
-</Box> */
-}

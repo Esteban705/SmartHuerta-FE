@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
   Avatar,
+  Backdrop,
   Button,
   Chip,
+  CircularProgress,
   Container,
   Divider,
   Grid,
@@ -19,6 +21,7 @@ import CardAddNewProduct from "../Products/cardProduct/CardAddNewProduct";
 import ModalEditUserProfile from "./components/editProfile/ModalEditUserProfileServices";
 import CardProduct from "../Products/cardProduct/CardProduct";
 import { userPerfilStyles } from "./styles/userPerfilStyles";
+import { useQuery } from "react-query";
 
 const UserPerfil = () => {
   const theme = useTheme();
@@ -26,15 +29,9 @@ const UserPerfil = () => {
   const classes = userPerfilStyles();
 
   const { getUserData, dataUser } = useContext(UserContext);
-  const [open, setOpen] = useState(false);
   const dataOfUser = dataUser();
 
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
-  const [userData, setUserData] = useState();
-
-  const handleClosetModalArticle = () => {
-    setOpen(false);
-  };
 
   const handleOpenProfilModal = () => {
     setOpenEditProfileModal(true);
@@ -43,20 +40,19 @@ const UserPerfil = () => {
     setOpenEditProfileModal(false);
   };
 
-  const getUsarData = async () => {
-    const data = await getUserData(dataOfUser.id);
-    setUserData(data);
-    return data;
-  };
+  const { data: userData, isLoading } = useQuery(
+    ["userData", dataOfUser.id],
+    () => getUserData(dataOfUser.id)
+  );
 
-  useEffect(() => {
-    getUsarData();
-  }, []);
-
-  console.log("UserPerfil :>> ", userData);
   return (
     <>
-      {userData ? (
+      {isLoading && (
+        <Backdrop className={classes.backdrop} open={isLoading}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
+      {userData && (
         <Container className={classes.deskstopRoots}>
           <Paper
             variant={10}
@@ -108,8 +104,7 @@ const UserPerfil = () => {
                       gutterBottom
                       style={{ padding: "0.5rem 0 0.5rem 1.5rem" }}
                     >
-                      {userData?.usuario.description ||
-                        "Sin descripcion..."}
+                      {userData?.usuario.description || "Sin descripcion..."}
                     </Typography>
                   </Grid>
                   {/* Contador de seguidores productos y trueques */}
@@ -178,7 +173,7 @@ const UserPerfil = () => {
               <Grid item>
                 <CardAddNewProduct />
               </Grid>
-              {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
+              {[0, 1, 2, 3].map((value) => (
                 <Grid item>
                   <CardProduct
                     productTittle={"manzanas"}
@@ -190,7 +185,7 @@ const UserPerfil = () => {
             </Grid>
           </Paper>
         </Container>
-      ) : null}
+      )}
     </>
   );
 };

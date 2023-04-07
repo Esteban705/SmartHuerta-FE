@@ -10,21 +10,22 @@ import DrawerNavbar from "./DrawerNavbar";
 import ListItemsNavbar from "./ListItemsNavbar";
 import { toolbarXl } from "./styles/NavbarStyles";
 import { UserContext } from "../Context/useContext";
+import { useQuery } from "react-query";
 
-const pages = ["Mapa", "Usuarios", "Trueques", "Nosotros", "Contacto"];
-const userSettings = ["Trueques","Configuraciones","Logout"]
+const pages = ["mapa", "usuarios", "trueques", "nosotros", "contacto"];
+const userSettings = ["Trueques", "Configuraciones", "Logout"];
 
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
+  const { getUserData, dataUser } = useContext(UserContext);
+  const dataOfUser = dataUser();
 
-  const { dataUser } = useContext(UserContext);
-  const userData = dataUser();
+  const { data: userData, isLoading } = useQuery(
+    ["userData", dataOfUser.id],
+    () => getUserData(dataOfUser.id)
+  );
 
-  // const userLog = localStorage.getItem("user");
-  // const userLoger = parseInt(localStorage.getItem("user"));
-
-  // console.log(getUserData());
 
   return (
     <AppBar color="inherit">
@@ -33,7 +34,7 @@ const Navbar = () => {
           {isMatch ? (
             <DrawerNavbar pages={pages} userData={userData} />
           ) : (
-            <ListItemsNavbar pages={pages} userData={userData}/>
+            <ListItemsNavbar pages={pages} userData={userData} />
           )}
         </Toolbar>
       </Container>

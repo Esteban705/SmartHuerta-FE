@@ -19,8 +19,6 @@ import { useContext } from "react";
 import { UserContext } from "../Context/useContext";
 
 const ListItemsNavbar = ({ pages, userData }) => {
-  // const { dataUser } = useContext(UserContext);
-  // const userData = dataUser();
   const classes = listItemsStyles();
 
   return (
@@ -59,7 +57,6 @@ const ListItemsNavbar = ({ pages, userData }) => {
             <Link to={`/${page}`.trim()} key={index}>
               <Button
                 value={page}
-                // onClick={handleclickNavButton}
                 sx={buttonNavStyles}
               >
                 <Typography variant="button" style={textItemsNavbar}>
@@ -70,7 +67,7 @@ const ListItemsNavbar = ({ pages, userData }) => {
           ))}
         </Box>
 
-        {userData ? (
+        {userData && (
           <div style={{ display: "flex", alignItems: "center" }}>
             <Typography variant="h5" style={textItemsNavbar}>
               {" "}
@@ -80,9 +77,6 @@ const ListItemsNavbar = ({ pages, userData }) => {
               <Badge badgeContent={4} color="secondary">
                 <MailIcon color="action" />
               </Badge>
-              {/* <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge> */}
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
@@ -91,7 +85,7 @@ const ListItemsNavbar = ({ pages, userData }) => {
             </IconButton>
             <AvatarOptions userData={userData} />
           </div>
-        ) : null}
+        ) }
       </div>
     </>
   );
