@@ -1,9 +1,7 @@
 import React from "react";
 import Footer from "../Footer/Footer";
-import UserCards from "./UserCards";
 import UsersCards from "./UsersCards";
 import { aboutUsStyles } from "./styles/UsuariosDeSH.style";
-import { cardProductStyles } from "../Products/Styles/CardProductsStyles";
 
 const UsuariosDeSH = () => {
   const classes = aboutUsStyles();
@@ -11,7 +9,7 @@ const UsuariosDeSH = () => {
   return (
     <>
       {/* Div contenedor de informacion acerca de nosotros */}
-      <div className={classes.contenedorInfoAU}>
+      <div className={classes.contenedorInfoUdSH}>
         {/* Div contenedor de titulo de acerca de nosotros */}
         <div>
           <h1 className={classes.tituloPrincipal}>

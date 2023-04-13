@@ -1,8 +1,9 @@
 import React from "react";
 import imagenes from "../About/imagenes";
 import { footerStyles } from "./styles/footer.style";
+import { Footer, Typography, Link } from "@material-ui/core";
 
-const Footer = () => {
+const MyFooter = () => {
   const classes = footerStyles();
 
   return (
@@ -47,4 +48,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MyFooter;

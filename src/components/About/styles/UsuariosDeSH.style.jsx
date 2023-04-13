@@ -1,7 +1,8 @@
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import imagenes from "../imagenes";
 
 export const aboutUsStyles = makeStyles((theme) => ({
-  contenedorInfoAU: {
+  contenedorInfoUdSH: {
     marginTop: "6rem",
     width: "100%",
     height: "500px",

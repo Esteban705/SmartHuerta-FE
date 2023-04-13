@@ -12,6 +12,8 @@ import Navbar from "./components/Navigation/Navbar";
 import PageNotFound from "./utils/PageNotFound";
 import UsuariosDeSH from "./components/About/UsuariosDeSH";
 import MisTruequesComponent from "./components/MisTrueques/MisTruequesComponent";
+import AboutSH from "./components/About/AboutSH";
+import SmartComponentInfo from "./components/About/SmartComponentInfo";
 
 function App() {
   const [logged, setLogged] = useState(true);
@@ -58,6 +60,7 @@ function App() {
                   path="mistrueques"
                   element={<MisTruequesComponent />}
                 ></Route>
+                <Route path="smart" element={<SmartComponentInfo />} />
               </Routes>
             </div>
           </>
