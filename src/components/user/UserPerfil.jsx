@@ -22,11 +22,10 @@ import { userPerfilStyles } from "./styles/userPerfilStyles";
 import { HttpContext } from "../Context/httpContext";
 import { ArticuloPage } from "../articulos/ArticuloPage";
 
-const UserPerfil = ({ getAllProducts, handleDelete }) => {
+const UserPerfil = ({ getAllProducts }) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = userPerfilStyles();
-
   const { getUserData, dataUser } = useContext(UserContext);
   const dataOfUser = dataUser();
   const [products, setProducts] = useState([]);
@@ -55,6 +54,7 @@ const UserPerfil = ({ getAllProducts, handleDelete }) => {
   const handleOpenProfilModal = () => {
     setOpenEditProfileModal(true);
   };
+  
 
   const getUsarData = async () => {
     const data = await getUserData(dataOfUser.id);
@@ -66,8 +66,8 @@ const UserPerfil = ({ getAllProducts, handleDelete }) => {
   };
 
   useEffect(() => {
-    getUsarData();
-    getUserData(dataOfUser.id);
+      getUsarData();
+
   }, []);
 
   return (
@@ -213,7 +213,6 @@ const UserPerfil = ({ getAllProducts, handleDelete }) => {
                     }
                     productId={value._id}
                     handleClickOpenModal={handleClickOpenModal}
-                    handleDelete={handleDelete}
                   />
                 </Grid>
               ))}

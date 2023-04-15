@@ -9,6 +9,7 @@ import Login from "./components/Login/LoginUi";
 import { MapPage } from "./components/map/MapPage";
 import Navbar from "./components/Navigation/Navbar";
 import { UserPerfilPage } from "./components/user/UserPerfilPage";
+import { ArticleMethods } from "./components/Context/articleContext";
 
 function App() {
   return (
@@ -25,7 +26,11 @@ function App() {
               </HouseMethods>
             }
           />
-          <Route path="/Perfil" element={<UserPerfilPage />} />
+          <Route path="/Perfil" element={
+            <ArticleMethods>
+          <UserPerfilPage />
+          </ArticleMethods>
+          } />
         </Routes>
       </UserMethods>
     </HttpMethods>

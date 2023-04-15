@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Card,
@@ -14,6 +14,7 @@ import {
 import productoSinImagen from "../../../assets/producto-sin-imagen.png";
 import { cardProductStyles } from "../Styles/CardProductsStyles";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { ArticleContext } from "../../Context/articleContext";
 
 const CardProduct = ({
   productTittle,
@@ -21,8 +22,8 @@ const CardProduct = ({
   productImages,
   productId,
   handleClickOpenModal,
-  handleDelete,
 }) => {
+  const { handleDeleteProduct } = useContext(ArticleContext);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = cardProductStyles();
@@ -34,7 +35,7 @@ const CardProduct = ({
         <Card className={classes.cardRoot}>
           <button
             onClick={() => {
-              handleDelete(productId);
+              handleDeleteProduct(productId);
             }}
           >
             <DeleteIcon

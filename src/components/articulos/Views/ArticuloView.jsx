@@ -80,6 +80,7 @@ export const ArticuloView = ({
   const { dataUser } = useContext(UserContext);
   const { loading } = useContext(HttpContext);
 
+
   const getDataToForm = async () => {
     const getDataUser = await dataUser();
     const getCategories = await getAllCategories();
@@ -97,9 +98,8 @@ export const ArticuloView = ({
   };
 
   const hanldeSubmitForm = async (values, dataImg) => {
-    const response = await hanldeSubmit(values, dataImg);
-
-    response.ok
+    const { data } = await hanldeSubmit(values, dataImg);
+data.ok
       ? toast.success("¡Producto agregado con exito!")
       : toast.error("error en el sistema");
   };
