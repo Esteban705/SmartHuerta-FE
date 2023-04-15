@@ -45,8 +45,9 @@ const EditProfileUserUI = ({
   const classes = useStyles();
   const [dataImg, setDataImg] = useState("");
 
-  const { usuario } = userData;
 
+
+  const usuario  = userData?.usuario;
   const uploadImage = async (image) => {
     if (!image) return;
     console.log(image);
@@ -62,9 +63,9 @@ const EditProfileUserUI = ({
     >
       <Formik
         initialValues={{
-          email: usuario.email ?? "",
-          name: usuario.name ?? "",
-          description: usuario.description ?? "",
+          email: usuario?.email ?? "",
+          name: usuario?.name ?? "",
+          description: usuario?.description ?? "",
         }}
         onSubmit={(values) => {
           hanldeSubmitForm(values, dataImg, usuario._id);
