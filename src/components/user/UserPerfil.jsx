@@ -20,33 +20,46 @@ import ModalEditUserProfile from "./components/editProfile/ModalEditUserProfileS
 import CardProduct from "../Products/cardProduct/CardProduct";
 import { userPerfilStyles } from "./styles/userPerfilStyles";
 import { HttpContext } from "../Context/httpContext";
+import { ArticuloPage } from "../articulos/ArticuloPage";
 
-const UserPerfil = () => {
+const UserPerfil = ({ getAllProducts }) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = userPerfilStyles();
-
-  const { loading } = useContext(HttpContext);
   const { getUserData, dataUser } = useContext(UserContext);
-  const [open, setOpen] = useState(false);
   const dataOfUser = dataUser();
-
+  const [products, setProducts] = useState([]);
   const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
-  const [userData, setUserData] = useState();
+  const [openModalCreateProduct, setOpenModalCreateProduct] = useState(false);
+  const [productId, setProductId] = useState("0");
+
+  const handleClickOpenModal = (product) => {
+    setProductId("0");
+    if (product) {
+      setProductId(product);
+    }
+    setOpenModalCreateProduct(true);
+  };
 
   const handleClosetModalArticle = () => {
-    setOpen(false);
+    setOpenModalCreateProduct(false);
   };
+
+  const handleCloseModalProfile = () => {
+    setOpenModalCreateProduct(false);
+  };
+
+  const [userData, setUserData] = useState();
 
   const handleOpenProfilModal = () => {
     setOpenEditProfileModal(true);
   };
-  const handleCloseModalProfile = () => {
-    setOpenEditProfileModal(false);
-  };
 
   const getUsarData = async () => {
     const data = await getUserData(dataOfUser.id);
+    const getProducts = await getAllProducts(dataOfUser.id);
+
+    setProducts(getProducts.getAllProduct);
     setUserData(data);
     return data;
   };
@@ -55,10 +68,14 @@ const UserPerfil = () => {
     getUsarData();
   }, []);
 
- 
   return (
     <>
-      {!loading && (
+      <>
+        <ArticuloPage
+          open={openModalCreateProduct}
+          handleClosetModalArticle={handleClosetModalArticle}
+          productID={productId}
+        />
         <Container className={classes.deskstopRoots}>
           <Paper
             variant={10}
@@ -178,23 +195,29 @@ const UserPerfil = () => {
             >
               <Grid item>
                 <div>
-                  <CardAddNewProduct />
+                  <CardAddNewProduct
+                    handleClickOpenModal={handleClickOpenModal}
+                  />
                 </div>
               </Grid>
-              {[0, 1, 2, 3, 4, 5, 6, 7].map((key, value) => (
+              {products.map((value, key) => (
                 <Grid item>
                   <CardProduct
                     key={key}
-                    productTittle={"manzanas"}
-                    productDescription={"manzanas rojas ricas pa"}
-                    productImages={""}
+                    productTittle={value?.productName}
+                    productDescription={value?.coments}
+                    productImages={
+                      value?.idImagen ? value?.idImagen[0].dataImg : ""
+                    }
+                    productId={value._id}
+                    handleClickOpenModal={handleClickOpenModal}
                   />
                 </Grid>
               ))}
             </Grid>
           </Paper>
         </Container>
-      )}
+      </>
     </>
   );
 };
