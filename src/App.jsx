@@ -7,8 +7,9 @@ import { UserMethods } from "./components/Context/useContext";
 import { HouseMethods } from "./components/Context/houseContext";
 import LoginUi from "./components/Login/LoginUi";
 import { MapPage } from "./components/map/MapPage";
-import UserPerfil from "./components/user/UserPerfil";
 import Navbar from "./components/Navigation/Navbar";
+import { UserPerfilPage } from "./components/user/UserPerfilPage";
+import { ArticleMethods } from "./components/Context/articleContext";
 import PageNotFound from "./utils/PageNotFound";
 import UsuariosDeSH from "./components/About/UsuariosDeSH";
 import MisTruequesComponent from "./components/MisTrueques/MisTruequesComponent";
@@ -21,6 +22,26 @@ function App() {
   return (
     <HttpMethods>
       <UserMethods>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/Mapa"
+            element={
+              <HouseMethods>
+                <MapPage />
+              </HouseMethods>
+            }
+          />
+          <Route
+            path="/Perfil"
+            element={
+              <ArticleMethods>
+                <UserPerfilPage />
+              </ArticleMethods>
+            }
+          />
+        </Routes>
         <Navbar /> {/* Verificamos si usuario está logeado */}
         {!logged ? (
           <>

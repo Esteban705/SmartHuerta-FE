@@ -53,6 +53,7 @@ export const cardProductStyles = makeStyles((theme) => ({
     "&:hover": {
       transform: "scale(1.05)",
     },
+    position: "relative",
   },
   cardMedia: {
     height: 140,

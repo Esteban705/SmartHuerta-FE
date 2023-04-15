@@ -15,6 +15,9 @@ import { AcordionOfProductsView } from "./AcordionOfProductsView";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../Context/useContext";
+import { HttpContext } from "../../Context/httpContext";
+import { LoadingSkeleton } from "./LoadingSkeleton";
+import { toast, Toaster } from "react-hot-toast";
 
 const styles = (theme) => ({
   root: {
@@ -63,46 +66,56 @@ const DialogActions = withStyles((theme) => ({
 export const ArticuloView = ({
   handleClosetModalArticle,
   open,
-  hanldeSubmitForm,
+  hanldeSubmit,
   getAllCategories,
   getUserHome,
   getProduct,
+  productID,
 }) => {
   const [dataImg, setDataImg] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
-  const [userData, setUserData] = useState()
+  const [userData, setUserData] = useState();
   const [allHomes, setAllHomes] = useState([]);
-  const [prodructData, setProdructData] = useState([])
+  const [prodructData, setProdructData] = useState([]);
   const { dataUser } = useContext(UserContext);
+  const { loading } = useContext(HttpContext);
+
 
   const getDataToForm = async () => {
     const getDataUser = await dataUser();
     const getCategories = await getAllCategories();
     const gethomesToUser = await getUserHome(getDataUser.id);
-    const getDataProduct = await  getProduct('63fcc7d9fca6f844dc857534');
-
 
     setAllCategories(getCategories.getAllCategories);
     setAllHomes(gethomesToUser);
-    setUserData(getDataUser)
-    setProdructData(getDataProduct)
-    setDataImg(getDataProduct.getProduct.idImagen)
+    setUserData(getDataUser);
+  };
+
+  const getDataEditProduct = async () => {
+    const getDataProduct = await getProduct(productID);
+    setProdructData(getDataProduct);
+    setDataImg(getDataProduct?.getProduct?.idImagen ?? []);
+  };
+
+  const hanldeSubmitForm = async (values, dataImg) => {
+    const { data } = await hanldeSubmit(values, dataImg);
+data.ok
+      ? toast.success("¡Producto agregado con exito!")
+      : toast.error("error en el sistema");
   };
 
   useEffect(() => {
     getDataToForm();
-    
+    getDataEditProduct();
   }, []);
+
+  useEffect(() => {
+    getDataEditProduct();
+  }, [productID]);
 
   return (
     <div>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={handleClosetModalArticle}
-      >
-        Open dialog
-      </Button>
+      <Toaster position="top-center" />
       <Dialog
         fullScreen
         style={{ width: "90%", height: "90%", margin: "auto" }}
@@ -138,15 +151,19 @@ export const ArticuloView = ({
                 display: "grid",
               }}
             >
-              <ProductoAddOrEddit
-                hanldeSubmitForm={hanldeSubmitForm}
-                dataImg={dataImg}
-                setDataImg={setDataImg}
-                allCategories={allCategories}
-                allHomes={allHomes}
-                userData={userData}
-                prodructData={prodructData}
-              />
+              {!loading ? (
+                <ProductoAddOrEddit
+                  hanldeSubmitForm={hanldeSubmitForm}
+                  dataImg={dataImg}
+                  setDataImg={setDataImg}
+                  allCategories={allCategories}
+                  allHomes={allHomes}
+                  userData={userData}
+                  prodructData={prodructData}
+                />
+              ) : (
+                <LoadingSkeleton />
+              )}
             </Paper>
 
             <Paper

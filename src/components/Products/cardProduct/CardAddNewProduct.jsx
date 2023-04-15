@@ -9,31 +9,19 @@ import {
 import React, { useState } from "react";
 import { cardAddNewProductStyles } from "../Styles/CardProductsStyles";
 
-const CardAddNewProduct = () => {
+const CardAddNewProduct = ({handleClickOpenModal}) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = cardAddNewProductStyles();
   const [openModalCreateProduct, setOpenModalCreateProduct] = useState(false);
 
-  const handleClickOpenModal = () => {
-    setOpenModalCreateProduct(true);
-    console.log("object :>> ", "object");
-  };
-
-  const handleCloseModal = () => {
-    setOpenModalCreateProduct(false);
-  };
-
-  const handleClick = () => {
-    console.log("asdasdasd");
-  };
 
   return (
     <>
       {!isMatch ? (
         <button
           onClick={(e) => {
-            console.log("adsasd");
+            handleClickOpenModal()
           }}
         >
           <Card className={classes.root}>

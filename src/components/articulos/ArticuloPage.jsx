@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { HttpContext } from "../Context/httpContext";
 import { ArticuloView } from "./Views/ArticuloView";
+import { toast } from "react-hot-toast";
 
-export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
-  const { get, post } = useContext(HttpContext);
+export const ArticuloPage = ({ open, handleClosetModalArticle, productID }) => {
+  const { get, post, put } = useContext(HttpContext);
 
-  const hanldeSubmitForm = async (values, dataImg) => {
+  const hanldeSubmit = async (values, dataImg) => {
     const categoriesId = values.categories.map((dataCategories) => {
       return dataCategories._id;
     });
@@ -20,14 +21,13 @@ export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
       images: dataImg,
     };
 
-    console.log({prepareDataToProduct})
+    const saveNewproduct =
+      productID !== "0"
+        ? await put(`/api/product/${productID}`, prepareDataToProduct)
+        : await post(`/api/product/`, prepareDataToProduct);
 
-   /*  const saveNewproduct = await post(`/api/product/`, prepareDataToProduct);
-
-    if(!saveNewproduct.ok) return console.log('error') */
+    return saveNewproduct;
   };
-
-
 
   const getProduct = async (productId) => {
     const getProductById = await get(`/api/product/${productId}`);
@@ -37,7 +37,6 @@ export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
 
     return getProductById;
   };
-
 
   const getAllCategories = async () => {
     const getAllCategories = await get("/api/categories");
@@ -58,13 +57,16 @@ export const ArticuloPage = ({ open, handleClosetModalArticle }) => {
   };
 
   return (
-    <ArticuloView
-      handleClosetModalArticle={handleClosetModalArticle}
-      open={open}
-      hanldeSubmitForm={hanldeSubmitForm}
-      getAllCategories={getAllCategories}
-      getUserHome={getUserHome}
-      getProduct={getProduct}
-    />
+    <>
+      <ArticuloView
+        handleClosetModalArticle={handleClosetModalArticle}
+        open={open}
+        hanldeSubmit={hanldeSubmit}
+        getAllCategories={getAllCategories}
+        getUserHome={getUserHome}
+        getProduct={getProduct}
+        productID={productID}
+      />
+    </>
   );
 };

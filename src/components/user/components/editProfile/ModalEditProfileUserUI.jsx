@@ -92,7 +92,7 @@ const EditProfileUserUI = ({
                   <Grid item>
                     <Avatar
                       src={
-                        dataImg[0]?.newEncodedPicture ?? usuario.imgId.dataImg
+                     usuario?.imgId?.dataImg
                       }
                       className={classes.imgProfile}
                     />
