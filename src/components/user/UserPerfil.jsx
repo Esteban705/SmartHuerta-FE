@@ -54,7 +54,6 @@ const UserPerfil = ({ getAllProducts }) => {
   const handleOpenProfilModal = () => {
     setOpenEditProfileModal(true);
   };
-  
 
   const getUsarData = async () => {
     const data = await getUserData(dataOfUser.id);
@@ -66,8 +65,7 @@ const UserPerfil = ({ getAllProducts }) => {
   };
 
   useEffect(() => {
-      getUsarData();
-
+    getUsarData();
   }, []);
 
   return (
