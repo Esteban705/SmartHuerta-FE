@@ -43,7 +43,7 @@ export const cardAddNewProductStyles = makeStyles({
   },
 });
 
-export const cardProductStyles = makeStyles((theme) => ({
+export const cardPerfilStyles = makeStyles((theme) => ({
   cardRoot: {
     width: "16rem",
     height: "22rem",
@@ -53,7 +53,6 @@ export const cardProductStyles = makeStyles((theme) => ({
     "&:hover": {
       transform: "scale(1.05)",
     },
-    position: "relative",
   },
   cardMedia: {
     height: 140,
@@ -75,5 +74,15 @@ export const cardProductStyles = makeStyles((theme) => ({
   },
   rowGridInfo: {
     paddingLeft: "0.5rem",
+  },
+  btnPerfil: {
+    height: "30px",
+    width: "225px",
+    border: "none",
+    color: "blue",
+    marginBottom: "2rem",
+    textAlign: "center",
+    display: "inlineBlock",
+    fontSize: "14px",
   },
 }));

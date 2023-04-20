@@ -27,15 +27,13 @@ export const UserMethods = ({ children }) => {
   };
 
   const getUserData = async (idUser) => {
-    try {
+    try {   
       const getDataOfUser = await get(`/api/auth/${idUser}`);
-      // console.log(getDataOfUser)
       return getDataOfUser;
     } catch (error) {
       console.log(error);
     }
   };
-
 
   return (
     <UserContext.Provider

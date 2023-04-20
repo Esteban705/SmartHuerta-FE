@@ -9,33 +9,32 @@ import {
 import React, { useState } from "react";
 import { cardAddNewProductStyles } from "../Styles/CardProductsStyles";
 
-const CardAddNewProduct = () => {
+const CardAddNewProduct = ({handleClickOpenModal}) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = cardAddNewProductStyles();
   const [openModalCreateProduct, setOpenModalCreateProduct] = useState(false);
 
-  const handleClickOpenModal = () => {
-    setOpenModalCreateProduct(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModalCreateProduct(false);
-  };
 
   return (
     <>
       {!isMatch ? (
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardContent className={classes.content}>
-              <Typography gutterBottom variant="h1">
-                +
-              </Typography>
-              <Typography variant="h6">AGREGAR UN PRODUCTO</Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        <button
+          onClick={(e) => {
+            handleClickOpenModal()
+          }}
+        >
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardContent className={classes.content}>
+                <Typography gutterBottom variant="h1">
+                  +
+                </Typography>
+                <Typography variant="h6">AGREGAR UN PRODUCTO</Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </button>
       ) : (
         // mobile component
         <Card className={classes.rowRoot}>

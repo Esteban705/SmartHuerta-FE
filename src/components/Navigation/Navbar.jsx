@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import {
-  AppBar,
-  Container,
-  Toolbar,
-  useMediaQuery,
-  useTheme,
+    AppBar,
+    Container,
+    Toolbar,
+    useMediaQuery,
+    useTheme
 } from "@material-ui/core";
 import DrawerNavbar from "./DrawerNavbar";
 import ListItemsNavbar from "./ListItemsNavbar";
@@ -41,5 +41,6 @@ const Navbar = () => {
     </AppBar>
   );
 };
+
 
 export default Navbar;

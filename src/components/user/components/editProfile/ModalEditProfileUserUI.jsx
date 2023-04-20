@@ -55,8 +55,9 @@ const EditProfileUserUI = ({
   const classes = useStyles();
   const [dataImg, setDataImg] = useState("");
 
-  const { usuario } = userData;
 
+
+  const usuario  = userData?.usuario;
   const uploadImage = async (image) => {
     if (!image) return;
 
